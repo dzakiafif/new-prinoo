@@ -1,0 +1,518 @@
+{% extends 'layout_frontend.html.twig' %}
+
+{% block subLayout %}
+    <div class="top"></div><div class="left"></div><div class="right"></div>
+
+    <!-- LOADER -->
+    <div class="loader">
+        <div class="tt-loading-center">
+            <div class="tt-loading-center-absolute">
+                <div class="tt-object object_four"></div>
+                <div class="tt-object object_three"></div>
+                <div class="tt-object object_two"></div>
+                <div class="tt-object object_one"></div>
+            </div>
+        </div>
+        <div id="loading-text">LOADING</div>
+    </div>
+    <!--LOADER Ends-->
+
+
+
+    <header class="transparent">
+        <div class="container-fluid">
+            <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
+                <div id="menu_bars" class="right">
+                    <span class="t1"></span>
+                    <span class="t2"></span>
+                    <span class="t3"></span>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('app_index') }}"><img src="{{ asset('assets_frontend') }}/images/prinoo-01.png" class="logo" alt=""></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right" data-in="slideIn" data-out="fadeOut">
+                        {#<li><a href="portfolio.html">Work</a></li>#}
+                        <li class="last"><a href="{{ path('app_login') }}">Login</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar_menu">
+                    <nav class="pushmenu pushmenu-right">
+                        <a class="push-logo" href="{{ asset('app_user_index') }}"><img src="{{ asset('assets_frontend') }}/images/logo1.png" alt="logo"></a>
+                        <ul class="push_nav centered">
+
+                            <li><a href="{{ path('app_login') }}">Login</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <!--Slider Main-->
+    {#<div id="revo_main_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="scroll-effect76">#}
+        {#<div id="revo_main" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">#}
+            {#<ul>#}
+                {#<!-- SLIDE  -->#}
+                {#<li data-index="rs-17" data-transition="fade" data-slotamount="default"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500">#}
+                    {#<!-- MAIN IMAGE -->#}
+                    {#<img src="{{ asset('assets_frontend') }}/images/home-banner1.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="16" class="rev-slidebg" data-no-retina>#}
+                    {#<!-- LAYER NR. 1 -->#}
+                    {#<div class="tp-caption tp-resizeme text-left"#}
+                         {#data-x="['left','left','left','left']" data-hoffset="['0','70','70','70']"#}
+                         {#data-y="['220','220','260','290']" data-voffset="['0','0','30','70']"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-transform_idle="o:1;"#}
+                         {#data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"#}
+                         {#data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"#}
+                         {#data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"#}
+                         {#data-start="1500"#}
+                         {#data-splitin="none"#}
+                         {#data-splitout="none"#}
+                         {#data-responsive_offset="on" style="z-index:2"><span class="t_55 dark_t">Minimalism wars<br> <i class="border"></i>#}
+          {#Senior graphic</span> <br><strong class="t_55 dark_t bold">Designer</strong>#}
+                    {#</div>#}
+
+                    {#<div class="tp-caption tp-resizeme rs-parallaxlevel-8"#}
+                         {#id="slide-17-layer-10"#}
+                         {#data-x="center"  data-voffset="['50','50','50','70']"#}
+                         {#data-y="center" data-voffset="['0','0','30','70']"#}
+                         {#data-width="none"#}
+                         {#data-height="none"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-transform_idle="o:1;"#}
+                         {#data-transform_in="opacity:0;s:1000;e:Power2.easeInOut;"#}
+                         {#data-transform_out="opacity:0;s:1000;s:1000;"#}
+                         {#data-start="1000"#}
+                         {#data-responsive_offset="on" style="z-index:1">#}
+                        {#<div class="rs-looped"  data-easing="linearEaseNone" data-startdeg="50" data-enddeg="360" data-speed="200" data-origin="50% 50%">#}
+                            {#<img src="{{ asset('assets_frontend') }}/images/home-layer1.jpg" alt=""  width="620" height="500" data-ww="['620px','500px','320px','300px']" data-hh="['500px','350px','270px','250px']" data-no-retina>#}
+                        {#</div>#}
+                    {#</div>#}
+
+                    {#<!--Layer Social Icons-->#}
+                    {#<div class="tp-caption"#}
+                         {#data-x="['left','left','left','left']" data-hoffset="['210','70','70','70']"#}
+                         {#data-y="['center','center','center','center']" data-voffset="['110','110','140','140']"#}
+                         {#data-width="none"#}
+                         {#data-height="none"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-visibility="['on','on','off','off']"#}
+                         {#data-start="500"#}
+                         {#data-splitin="none"#}
+                         {#data-splitout="none"#}
+                         {#data-actions=''#}
+                         {#data-basealign="slide"#}
+                         {#data-responsive_offset="off"#}
+                         {#data-responsive="off"#}
+                         {#data-startslide="0"#}
+                         {#data-endslide="9" style="z-index: 7; white-space: nowrap;">#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">FaceBook</a>#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">twitter</a>#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">Dribble</a>#}
+                    {#</div>#}
+                {#</li>#}
+                {#<!-- SLIDE  -->#}
+                {#<li data-index="rs-18" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000">#}
+                    {#<img src="{{ asset('assets_frontend') }}/images/home-banner2.jpg" alt="" data-bgposition="center center" data-duration="30000" data-ease="Linear.easeNone" data-bgparallax="16"  class="rev-slidebg" data-no-retina>#}
+                    {#<div class="tp-caption tp-resizeme text-left"#}
+                         {#data-x="['left','left','left','left']" data-hoffset="['0','70','70','70']"#}
+                         {#data-y="['220','220','260','290']" data-voffset="['0','0','30','70']"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-transform_idle="o:1;"#}
+                         {#data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"#}
+                         {#data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"#}
+                         {#data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"#}
+                         {#data-start="1500"#}
+                         {#data-splitin="none"#}
+                         {#data-splitout="none"#}
+                         {#data-responsive_offset="on" style="z-index:2"><span class="t_55 dark_t">Minimalism wars<br> <i class="border"></i>#}
+          {#Senior graphic</span> <br><strong class="t_55 dark_t bold">Designer</strong>#}
+                    {#</div>#}
+
+                    {#<div class="tp-caption tp-resizeme rs-parallaxlevel-8"#}
+                         {#id="slide-17-layer-11"#}
+                         {#data-x="center"  data-hoffset="50"#}
+                         {#data-y="center"  data-voffset="['50','50','50','70']"#}
+                         {#data-width="none" data-voffset="['0','0','30','70']"#}
+                         {#data-height="none"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-transform_idle="o:1;"#}
+                         {#data-transform_in="opacity:0;s:1000;e:Power2.easeInOut;"#}
+                         {#data-transform_out="opacity:0;s:1000;s:1000;"#}
+                         {#data-start="1000"#}
+                         {#data-responsive_offset="on" style="z-index:1">#}
+                        {#<div class="rs-looped"  data-easing="linearEaseNone" data-startdeg="50" data-enddeg="360" data-speed="200" data-origin="50% 50%">#}
+                            {#<img src="{{ asset('assets_frontend') }}/images/home-layer2.jpg" alt=""  width="620" height="500" data-ww="['620px','500px','320px','300px']" data-hh="['500px','350px','270px','250px']" data-no-retina>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<!--Layer Social Icons-->#}
+                    {#<div class="tp-caption"#}
+                         {#data-x="['left','left','left','left']" data-hoffset="['210','70','70,'70']"#}
+                         {#data-y="['center','center','center','center']" data-voffset="['110','110','140','140']"#}
+                         {#data-width="none"#}
+                         {#data-height="none"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-visibility="['on','on','off','off']"#}
+                         {#data-start="500"#}
+                         {#data-splitin="none"#}
+                         {#data-splitout="none"#}
+                         {#data-actions=''#}
+                         {#data-basealign="slide"#}
+                         {#data-responsive_offset="off"#}
+                         {#data-responsive="off"#}
+                         {#data-startslide="0"#}
+                         {#data-endslide="9" style="z-index: 7; white-space: nowrap;">#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">FaceBook</a>#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">twitter</a>#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">Dribble</a>#}
+                    {#</div>#}
+                {#</li>#}
+                {#<!-- SLIDE  -->#}
+                {#<li data-index="rs-19" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000">#}
+                    {#<img src="{{ asset('assets_frontend') }}/images/home-banner3.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="16" class="rev-slidebg" data-no-retina>#}
+                    {#<div class="tp-caption tp-resizeme text-left"#}
+                         {#data-x="['left','left','left','left']" data-hoffset="['0','70','70','70']"#}
+                         {#data-y="['220','220','260','290']" data-voffset="['0','0','30','70']"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-transform_idle="o:1;"#}
+                         {#data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"#}
+                         {#data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"#}
+                         {#data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"#}
+                         {#data-start="1500"#}
+                         {#data-splitin="none"#}
+                         {#data-splitout="none"#}
+                         {#data-responsive_offset="on" style="z-index:2"><span class="t_55 dark_t">Minimalism wars<br> <i class="border"></i>#}
+          {#Senior graphic</span> <br><strong class="t_55 dark_t bold">Designer</strong>#}
+                    {#</div>#}
+                    {#<div class="tp-caption tp-resizeme rs-parallaxlevel-8"#}
+                         {#id="slide-17-layer-13"#}
+                         {#data-x="center"  data-hoffset="50"#}
+                         {#data-y="center"   data-voffset="['50','50','50','70']"#}
+                         {#data-width="none" data-voffset="['0','0','30','70']"#}
+                         {#data-height="none"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-transform_idle="o:1;"#}
+                         {#data-transform_in="opacity:0;s:1000;e:Power2.easeInOut;"#}
+                         {#data-transform_out="opacity:0;s:1000;s:1000;"#}
+                         {#data-start="1000"#}
+                         {#data-responsive_offset="on" style="z-index:1">#}
+                        {#<div class="rs-looped"  data-easing="linearEaseNone" data-startdeg="50" data-enddeg="360" data-speed="200" data-origin="50% 50%">#}
+                            {#<img src="{{ asset('assets_frontend') }}/images/home-layer3.jpg" alt="" width="620" height="500" data-ww="['620px','500px','320px','300px']" data-hh="['500px','350px','270px','250px']" data-no-retina>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="tp-caption"#}
+                         {#data-x="['left','left','left','left']" data-hoffset="['210','70','70','70']"#}
+                         {#data-y="['center','center','center','center']" data-voffset="['110','110','140','140']"#}
+                         {#data-width="none"#}
+                         {#data-height="none"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-visibility="['on','on','off','off']"#}
+                         {#data-start="500"#}
+                         {#data-splitin="none"#}
+                         {#data-splitout="none"#}
+                         {#data-actions=''#}
+                         {#data-basealign="slide"#}
+                         {#data-responsive_offset="off"#}
+                         {#data-responsive="off"#}
+                         {#data-startslide="0"#}
+                         {#data-endslide="9" style="z-index: 7; white-space: nowrap;">#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">FaceBook</a>#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">twitter</a>#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">Dribble</a>#}
+                    {#</div>#}
+                {#</li>#}
+                {#<!--SLIDE-->#}
+                {#<li data-index="rs-20" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000">#}
+                    {#<img src="{{ asset('assets_frontend') }}/images/home-banner4.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="16" class="rev-slidebg" data-no-retina>#}
+                    {#<div class="tp-caption tp-resizeme text-left"#}
+                         {#data-x="['left','left','left','left']" data-hoffset="['0','70','70','70']"#}
+                         {#data-y="['220','220','260','290']" data-voffset="['0','0','30','70']"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-transform_idle="o:1;"#}
+                         {#data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"#}
+                         {#data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"#}
+                         {#data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"#}
+                         {#data-start="1500"#}
+                         {#data-splitin="none"#}
+                         {#data-splitout="none"#}
+                         {#data-responsive_offset="on" style="z-index:2"><span class="t_55 dark_t">Minimalism wars<br> <i class="border"></i>#}
+          {#Senior graphic</span> <br><strong class="t_55 dark_t bold">Designer</strong>#}
+                    {#</div>#}
+                    {#<div class="tp-caption tp-resizeme rs-parallaxlevel-8"#}
+                         {#id="slide-17-layer-12"#}
+                         {#data-x="center"  data-voffset="['50','50','50','70']"#}
+                         {#data-y="center"  data-voffset="['0','0','30','70']"#}
+                         {#data-width="none"#}
+                         {#data-height="none"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-transform_idle="o:1;"#}
+                         {#data-transform_in="opacity:0;s:1000;e:Power2.easeInOut;"#}
+                         {#data-transform_out="opacity:0;s:1000;s:1000;"#}
+                         {#data-start="1000"#}
+                         {#data-responsive_offset="on" style="z-index:1">#}
+                        {#<div class="rs-looped"  data-easing="linearEaseNone" data-startdeg="50" data-enddeg="360" data-speed="200" data-origin="50% 50%">#}
+                            {#<img src="{{ asset('assets_frontend') }}/images/home-layer4.jpg" alt="" width="620" height="500" data-ww="['620px','500px','320px','300px']" data-hh="['500px','350px','270px','250px']" data-no-retina>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="tp-caption"#}
+                         {#data-x="['left','left','left','left']" data-hoffset="['210','70','70','70']"#}
+                         {#data-y="['center','center','center','center']" data-voffset="['110','110','140','140']"#}
+                         {#data-width="none"#}
+                         {#data-height="none"#}
+                         {#data-whitespace="nowrap"#}
+                         {#data-visibility="['on','on','off','off']"#}
+                         {#data-start="500"#}
+                         {#data-splitin="none"#}
+                         {#data-splitout="none"#}
+                         {#data-actions=''#}
+                         {#data-basealign="slide"#}
+                         {#data-responsive_offset="off"#}
+                         {#data-responsive="off"#}
+                         {#data-startslide="0"#}
+                         {#data-endslide="9" style="z-index: 7; white-space: nowrap;">#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">FaceBook</a>#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">twitter</a>#}
+                        {#<a class="rev_social dark text-uppercase" href="#." target="_blank">Dribble</a>#}
+                    {#</div>#}
+                {#</li>#}
+            {#</ul>#}
+        {#</div>#}
+    {#</div>#}
+    {#<!--Slider ends-->#}
+
+
+
+    <!--About Us-->
+    <section id="about" class=" padding_top padding_bottom_half">
+        <div class="container about_intro">
+            <div class="row">
+                <div class="about_text col-sm-6 heading_space wow fadeIn" data-wow-delay="500ms">
+                    <h2 class="heading_space">Apa sih Kami?</h2>
+                    <p class="bottom35">Prinoo adalah platform pemesanan event kits online yang dibuat untuk memudahkan para Event Organizer / Creator Event untuk memesan segala kebutuhan cetak untuk Event.</p>
+                    {#<p class="heading_space">Consequat Duis aute to irure dolor in reprehenderit in voluptate velit ease cillum dolore eu fugiat nulla pari excepteur sint. occaecat cupidatat non proident.</p>#}
+                    {#<a class="btn_default btn_border" href="#.">ABOUT US</a>#}
+                </div>
+                <div class="about_img col-sm-6 heading_space wow fadeIn" data-wow-delay="500ms">
+                    <img src="{{ asset('assets_frontend') }}/images/home-about.png" alt="About Us">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--About Us ends -->
+
+
+
+    <!--Gallery-->
+    <section id="gallery">
+        <div class="container">
+            <div id="nospace-gallery" class="cbp cbp-l-grid-mosaic">
+                <div style="margin-left: 13%">
+                {#<div class="cbp-item">#}
+                    {#<a href="images/portfolio1.jpg" class="cbp-lightbox">#}
+                        {#<img src="{{ asset('assets_frontend') }}/images/portfolio1.jpg" alt="">#}
+                        {#<div class="overlay red">#}
+                            {#<span class="overlay_top"><i class="icon-heart2"></i></span>#}
+                            {#<div class="overlay_bottom">#}
+                                {#<h4 class="text-uppercase">creative</h4>#}
+                                {#<p>35 WP Annyversary</p>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</a>#}
+                {#</div>#}
+                <div class="cbp-item">
+                    <a href="{{ asset('assets_frontend') }}/images/portfolio2.jpg" class="cbp-lightbox">
+                        <img src="{{ asset('assets_frontend') }}/images/portfolio2.jpg" alt="">
+                        <div class="overlay">
+                            <span class="overlay_top"><i class="icon-heart2"></i></span>
+                            <div class="overlay_bottom">
+                                <h4 class="text-uppercase">Paket 1</h4>
+                                <p>10.000</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {#<div class="cbp-item">#}
+                    {#<img src="{{ asset('assets_frontend') }}/images/portfolio-title.jpg" alt="">#}
+                    {#<div class="centered text-center white_t">#}
+                        {#<h2 class="text-capitalize bottom10">Selected Work</h2>#}
+                        {#<p class="bottom30">Consequat Duis aute to irure dolor in reprehenderit in voluptate velit ease cillum dolore eu fugiat nulla pari excepteur sint.#}
+                            {#occaecat cupidatat non proident.</p>#}
+                        {#<a class="btn_default btn_border white text-uppercase" href="#.">view all work</a>#}
+                    {#</div>#}
+                {#</div>#}
+                <div class="cbp-item graphic identity">
+                    <a href="{{ asset('assets_frontend') }}/images/portfolio3.jpg" class="cbp-lightbox">
+                        <img src="{{ asset('assets_frontend') }}/images/portfolio3.jpg" alt="">
+                        <div class="overlay yellow">
+                            <span class="overlay_top"><i class="icon-heart2"></i></span>
+                            <div class="overlay_bottom">
+                                <h4 class="text-uppercase">Paket 2</h4>
+                                <p>30.000</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {#<div class="cbp-item graphic identity">#}
+                    {#<a href="images/portfolio4.jpg" class="cbp-lightbox">#}
+                        {#<img src="{{ asset('assets_frontend') }}/images/portfolio4.jpg" alt="">#}
+                        {#<div class="overlay">#}
+                            {#<span class="overlay_top"><i class="icon-heart2"></i></span>#}
+                            {#<div class="overlay_bottom">#}
+                                {#<h4 class="text-uppercase">creative</h4>#}
+                                {#<p>35 WP Annyversary</p>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</a>#}
+                {#</div>#}
+                <div class="cbp-item">
+                    <a href="{{ asset('assets_frontend') }}/images/portfolio6.jpg" class="cbp-lightbox">
+                        <img src="{{ asset('assets_frontend') }}/images/portfolio6.jpg" alt="">
+                        <div class="overlay blue">
+                            <span class="overlay_top"><i class="icon-heart2"></i></span>
+                            <div class="overlay_bottom">
+                                <h4 class="text-uppercase">Paket 3</h4>
+                                <p>50.000</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                </div>
+                {#<div class="cbp-item">#}
+                    {#<a href="images/portfolio5.jpg" class="cbp-lightbox">#}
+                        {#<img src="{{ asset('assets_frontend') }}/images/portfolio5.jpg" alt="">#}
+                        {#<div class="overlay blue">#}
+                            {#<span class="overlay_top"><i class="icon-heart2"></i></span>#}
+                            {#<div class="overlay_bottom">#}
+                                {#<h4 class="text-uppercase">creative</h4>#}
+                                {#<p>35 WP Annyversary</p>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</a>#}
+                {#</div>#}
+                {#<div class="cbp-item">#}
+                    {#<a href="images/portfolio7.jpg" class="cbp-lightbox">#}
+                        {#<img src="{{ asset('assets_frontend') }}/images/portfolio7.jpg" alt="">#}
+                        {#<div class="overlay green">#}
+                            {#<span class="overlay_top"><i class="icon-heart2"></i></span>#}
+                            {#<div class="overlay_bottom">#}
+                                {#<h4 class="text-uppercase">creative</h4>#}
+                                {#<p>35 WP Annyversary</p>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</a>#}
+                {#</div>#}
+            </div>
+        </div>
+    </section>
+    <!--Gallery Ends-->
+
+
+
+    <section id="descrip" class="padding_bottom">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12 margin_top wow fadeIn" data-wow-delay="900ms">
+                    <h2 class="text-capitalize bottom25"><center>Tertarik memesan di kami?</center></h2>
+                    <h2 class="text-capitalize bottom25"><center>Silahkan isi form dibawah ini</center></h2>
+                    <form class="callus">
+                        <div class="form-group">
+                            <select name="barang" id="" class="form-control">
+                            <option value="">-- Pilih Paket --</option>
+                            {% for item in barang %}
+                            <option value="{{ item.id }}">{{ item.namaBarang }}</option>
+                            {% endfor %}
+                            </select>
+                            {#<input type="text" class="form-control" placeholder="Your Name">#}
+                        </div>
+                        <div class="form-group">
+                        <input type="text" name="nama" id="" class="form-control" placeholder="Masukkan Nama">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Masukkan Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="alamat" id="" class="form-control" placeholder="Masukkan Alamat">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="no_hp" id="" class="form-control" placeholder="Masukkan No.Hp">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="total_pemesan" id="" class="form-control" placeholder="Masukkan Total Pemesanan">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="total_harga" id="" class="form-control" placeholder="Total Harga">
+                        </div>
+                        <a class="btn_default btn_border text-uppercase">submit</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    {#<!--FOOTER-->#}
+    {#<footer>#}
+        {#<div class="container foot_inner padding_top">#}
+            {#<div class="row">#}
+                {#<div class="col-sm-4 foot_panel bottom20">#}
+                    {#<a href="index.html"><img src="{{ asset('assets_frontend') }}/images/logo1.png" alt="logo" class="bottom30"></a>#}
+                    {#<p>Start Our Studio Duis aute to irure dolor in reprehenderit in cillum nulla excepteur sint.</p>#}
+                {#</div>#}
+                {#<div class="col-sm-8 foot_panel">#}
+                    {#<h3 class="bottom30">Get in Touch</h3>#}
+                    {#<div class="row">#}
+                        {#<div class="col-sm-4">#}
+                            {#<div class="reach bottom20">#}
+                                {#<i class="icon-location"></i>#}
+                                {#<p>201 Oak Street<br> Building 27<br> Manchester, UK</p>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="col-sm-4 bottom20">#}
+                            {#<div class="reach bottom10">#}
+                                {#<i class="icon-icons202"></i>#}
+                                {#<p>+1(123) 456 7890</p>#}
+                            {#</div>#}
+                            {#<div class="reach">#}
+                                {#<i class="icon-mail"></i>#}
+                                {#<p><a href="#.">hey@avant.com</a></p>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="col-sm-4">#}
+                            {#<ul class="social bottom20">#}
+                                {#<li><a href="#"><span class="hb"><i class="fa fa-facebook"></i></span></a></li>#}
+                                {#<li><a href="#"><span class="hb"><i class="icon-twitter4"></i></span></a></li>#}
+                                {#<li><a href="#"><span class="hb"><i class="icon-google"></i></span></a></li>#}
+                                {#<li><a href="#"><span class="hb"><i class="icon-dribbble4"></i></span></a></li>#}
+                                {#<li><a href="#"><span class="hb"><i class="icon-vimeo"></i></span></a></li>#}
+                            {#</ul>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="copyright">#}
+                {#<div class="row">#}
+                    {#<div class="col-sm-6">#}
+                        {#<p>Copyrights &copy; 2016 Avant. All rights reserved</p>#}
+                    {#</div>#}
+                    {#<div class="col-sm-6 text-right">#}
+                        {#<p>Made with love <i class="icon-heart2"></i> By <a href="#.">Themesindustry</a></p>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</footer>#}
+{% endblock %}
+{% block customJS %}
+    <script>
+
+    </script>
+{% endblock %}

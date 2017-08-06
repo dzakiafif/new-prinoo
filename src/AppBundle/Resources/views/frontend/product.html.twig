@@ -1,0 +1,619 @@
+{% extends 'layout_frontend.html.twig' %}
+
+{% block subLayout %}
+
+    <div id="sb-site" class="layout-theme animated-css"  data-header="sticky" data-header-top="200"  >
+
+        <!-- Loader -->
+        <div id="page-preloader"><span class="spinner"></span></div>
+        <!-- Loader end -->
+
+
+        <div id="wrapper">
+
+            <div class="container">
+
+                <header class="header">
+                    <div class="top-line">
+                        <div class="top-line__inner">
+                            <button type="button" class="hamburger is-closed  sb-toggle-left" data-toggle="offcanvas"> <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
+                            <nav>MENU</nav>
+                        </div>
+                    </div>
+                    <div class="header-links">
+                        <div class="header-search">
+                            <div class="navbar-search ">
+                                <form>
+                                    <div class="input-group">
+                                        <input type="text" value="" id="search" name="s" autocomplete="off" class="form-control" placeholder="Type your search...">
+                  <span class="input-group-btn">
+                  <button id="search-close" class="btn search-close" type="reset"><i class="icon_close"></i></button>
+                  </span> </div>
+                                </form>
+                            </div>
+                            <a href="#fakelink" id="search-open"><i class="icon ion-android-search"></i></a> </div>
+                        <a class="header-links__link" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> <a class="header-links__link" href="product.html"><i class="icon ion-android-share-alt"></i><span class="header-qty">0</span></a> <a class="header-links__link" href="product.html"><i class="icon ion-bag"></i><span class="header-qty">0</span></a> </div></header> <!-- end header -->
+
+
+
+
+
+                <div class="inner-header">
+                    <h1 class="ui-title-page">Shop</h1>
+                </div>
+
+
+                <div class="inner-page">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="breadcrumb-wrap clearfix">
+                                <ol class="breadcrumb">
+                                    <li><a href="product.html">home</a></li>
+                                    <li class="active">shop</li>
+                                </ol>
+                                <!-- end breadcrumb -->
+
+                                <div class="sorting">
+                                    <div  class="select jelect">
+                                        <input id="jelect" name="sorting" value="0" data-text="imagemin" type="text" class="jelect-input">
+                                        <div tabindex="0" role="button" class="jelect-current">Sorting by price</div>
+                                        <ul class="jelect-options">
+                                            <li data-val='0' tabindex="0"  class="jelect-option jelect-option_state_active">A-Z</li>
+                                            <li data-val='1' tabindex="0"  class="jelect-option">Z-A</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- end sorting -->
+                            </div>
+                            <!-- end breadcrumb-wrap -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <aside class="sidebar">
+                                <section class="widget widget-categories">
+                                    <h3 class="widget-title">category</h3>
+                                    <div class="block_content">
+                                        <ul class="nav nav-menu">
+                                            <li class="dropdown"> <a data-toggle="dropdown" href="product.html">man</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="product.html">Suit <span class="categories-number">(8)</span></a></li>
+                                                    <li><a href="product.html">Jacket <span class="categories-number">(10)</span></a></li>
+                                                    <li><a href="product.html">Pants <span class="categories-number">(9)</span></a></li>
+                                                    <li><a href="product.html">Shoes <span class="categories-number">(14)</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown"> <a data-toggle="dropdown" href="product.html">woman</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="product.html">women's dress 1</a></li>
+                                                    <li><a href="product.html">women's dress 2</a></li>
+                                                    <li><a href="product.html">women's dress 3</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown"> <a data-toggle="dropdown" href="product.html">accessories</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="product.html">shoes 1</a></li>
+                                                    <li><a href="product.html">shoes 2</a></li>
+                                                    <li><a href="product.html">shoes 3</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown"> <a data-toggle="dropdown" href="product.html">electronics</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="product.html">shoes 1</a></li>
+                                                    <li><a href="product.html">shoes 2</a></li>
+                                                    <li><a href="product.html">shoes 3</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown"> <a data-toggle="dropdown" href="product.html">for home</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="product.html">shoes 1</a></li>
+                                                    <li><a href="product.html">shoes 2</a></li>
+                                                    <li><a href="product.html">shoes 3</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- end block_content -->
+                                </section>
+                                <!-- end widget-categories -->
+
+                                <div class="widget widget-filter">
+                                    <div class="block_content">
+                                        <button class="filter-btn filter-btn_large filter-up js-filter"></button>
+                                        <div class="wrap-filter">
+                                            <div class="filter-label clearfix">
+                                                <input class="filter-input slider-price_min" disabled>
+                                                <input class="filter-input slider-price_max" disabled>
+                                            </div>
+                                            <div class="slider-price"></div>
+                                            <div class="filter-inner clearfix">
+                                                <div class="filter-price"> PRICE:
+                                                    <input class="filter-input slider-price_min">
+                                                    —
+                                                    <input class="filter-input slider-price_max">
+                                                </div>
+                                                <button class="filter-btn filter-btn_small">FILTER</button>
+                                            </div>
+                                            <ul class="nav nav-menu nav-menu_filter">
+                                                <li class="dropdown"> <a data-toggle="dropdown" href="product.html">material</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="product.html">material 1</a></li>
+                                                        <li><a href="product.html">material 2</a></li>
+                                                        <li><a href="product.html">material 3</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown"> <a data-toggle="dropdown" href="product.html">color</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="product.html">color 1</a></li>
+                                                        <li><a href="product.html">color 2</a></li>
+                                                        <li><a href="product.html">color 3</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown"> <a data-toggle="dropdown" href="product.html">size</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="product.html">size 1</a></li>
+                                                        <li><a href="product.html">size 2</a></li>
+                                                        <li><a href="product.html">size 3</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- end wrap-filter -->
+                                    </div>
+                                    <!-- end block_content -->
+                                </div>
+                                <!-- end widget-filter -->
+
+                                <div class="widget widget-banner">
+                                    <div class="block_content"> <a href="product.html"><img class="img-responsive" src="assets/media/banner/1.jpg" height="200" width="220" alt="Banner"></a> </div>
+                                    <!-- end block_content -->
+                                </div>
+                                <!-- end widget-banner -->
+
+                            </aside>
+                            <!-- end sidebar -->
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-sm-9">
+                            <main class="main-content">
+                                <ul class="list-catalog list-unstyled">
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/1.jpg" height="170" width="127" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">leather shoes</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect "> <img src="assets/media/catalog/2.jpg" height="130" width="146" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">leather bag</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/3.jpg" height="170" width="113" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">women's dress</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/4.jpg" height="189" width="152" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">men's jacket</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/5.jpg" height="126" width="182" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">women's shorts</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/6.jpg" height="188" width="186" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">women's sweaters</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/7.jpg" height="188" width="230" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">women's shirt</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/8.jpg" height="222" width="130" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">Men coat</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/9.jpg" height="147" width="172" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">Men portfolio</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/10.jpg" height="184" width="109" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">shirt & tie</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/11.jpg" height="183" width="160" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">men stole</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-catalog__item"> <a class="list-catalog__link" href="product.html">
+                                            <div class="list-catalog__foto img-hover-effect"> <img src="assets/media/catalog/12.jpg" height="205" width="120" alt="Goods"> <span class="helper"></span> </div>
+                                            <h2 class="list-catalog__title">men's suit</h2>
+                                        </a>
+                                        <div class="list-catalog__inner clearfix">
+                                            <a class="product-page-url" href="product.html" title="Add to cart" ><i class="icon ion-ios-plus-outline"></i></a>
+                                            <div class="pull-left"> <span class="list-catalog__price">20 £</span>
+                                                <button class="list-catalog__btn-basket"><i class="icon ion-bag "></i></button>
+                                            </div>
+                                            <div class="pull-right"> <a class="list-catalog__favorite" href="product.html"><i class="icon ion-android-favorite-outline"></i></a> I like </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- end list-catalog -->
+                            </main>
+                            <!-- end main-content -->
+
+                            <ul class="pagination">
+                                <li><a href="product.html"><i class="icon ion-ios-arrow-thin-left"></i></a></li>
+                                <li class="active"><a href="product.html">1</a></li>
+                                <li><a href="product.html">2</a></li>
+                                <li><a href="product.html">3</a></li>
+                                <li><a href="product.html"><i class="icon ion-ios-arrow-thin-right"></i></a></li>
+                            </ul>
+                            <!-- end pagination -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div>
+
+                <div class="section-letter">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form class="form-letter">
+                                <input class="form-letter__input" type="text" placeholder="Enter your mail and get a discount">
+                                <button class="form-letter__btn"><i class="icon ion-checkmark"></i></button>
+                            </form>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+
+
+
+
+                <div class="section-lists-goods">
+                    <div class="my-grid__container">
+                        <div class="row my-grid__row">
+                            <div class="col-sm-3 my-grid__col">
+                                <h2 class="ui-title-block">Top rated</h2>
+                                <ul class="list-goods list-goods_mod-a list-unstyled">
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/1.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Contrast Boots</h3>
+                                                <span class="list-goods__price">£42.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star-half"></i></li>
+                                                    <li><i class="icon ion-ios-star-outline"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/2.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Shorts</h3>
+                                                <span class="list-goods__price">£10.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star-outline"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/3.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Leather Shoes</h3>
+                                                <span class="list-goods__price">£50.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                </ul>
+                            </div>
+                            <!-- end col -->
+
+                            <div class="col-sm-3 my-grid__col">
+                                <h2 class="ui-title-block">Sale</h2>
+                                <ul class="list-goods list-goods_mod-a list-unstyled">
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/1.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Contrast Boots</h3>
+                                                <span class="list-goods__price_old">£42.00</span> <span class="list-goods__price_new">£30.00</span> </div>
+                                        </a> </li>
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/2.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Shorts</h3>
+                                                <span class="list-goods__price_old">£15.00</span> <span class="list-goods__price_new">£10.00</span> </div>
+                                        </a> </li>
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/3.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Leather Shoes</h3>
+                                                <span class="list-goods__price_old">£70.00</span> <span class="list-goods__price_new">£42.00</span> </div>
+                                        </a> </li>
+                                </ul>
+                            </div>
+                            <!-- end col -->
+
+                            <div class="col-sm-3 my-grid__col">
+                                <h2 class="ui-title-block">Novelty</h2>
+                                <ul class="list-goods list-goods_mod-a list-unstyled">
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/1.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Contrast Boots</h3>
+                                                <span class="list-goods__price">£42.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star-half"></i></li>
+                                                    <li><i class="icon ion-ios-star-outline"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/2.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Shorts</h3>
+                                                <span class="list-goods__price">£10.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star-outline"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/3.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Leather Shoes</h3>
+                                                <span class="list-goods__price">£50.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                </ul>
+                            </div>
+                            <!-- end col -->
+
+                            <div class="col-sm-3 my-grid__col">
+                                <h2 class="ui-title-block">Related</h2>
+                                <ul class="list-goods list-goods_mod-a list-unstyled">
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/1.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Contrast Boots</h3>
+                                                <span class="list-goods__price">£42.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star-half"></i></li>
+                                                    <li><i class="icon ion-ios-star-outline"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/2.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Shorts</h3>
+                                                <span class="list-goods__price">£10.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star-outline"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                    <li class="list-goods__item"> <a class="list-goods__link" href="product.html">
+                                            <div class="list-goods__foto"><img class="img-responsive" src="assets/media/list-goods/3.jpg" height="53" width="50" alt="goods"></div>
+                                            <div class="list-goods__inner">
+                                                <h3 class="list-goods__name">Leather Shoes</h3>
+                                                <span class="list-goods__price">£50.00</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                    <li><i class="icon ion-ios-star"></i></li>
+                                                </ul>
+                                            </div>
+                                        </a> </li>
+                                </ul>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- end container -->
+                </div>
+                <!-- end section-lists-goods -->
+
+                <div class="my-grid__container">
+                    <footer class="footer">
+                        <div class="footer-top">
+                            <div class="row">
+                                <section class="footer-block">
+                                    <h3  class=" footer-title"  >About us</h3>
+                                    <p>Aenean posuere, sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero.</p>
+                                    <a class="btn btn-default" href="product.html">more</a> </section>
+                                <section class="footer-block">
+                                    <h3  class="footer-title"   >Catalog products</h3>
+                                    <ul class="footer-list">
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">Jackets and sweatshirts</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">T-shirts and shirts</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">SHOES & sneakers</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">JIENS & PANTS</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">SUNGLASSES</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">windcheater</a> </li>
+                                    </ul>
+                                </section>
+                                <section class="footer-block">
+                                    <h3  class="footer-title"  >Information</h3>
+                                    <ul class="footer-list">
+                                        <li class="footer-list__item"> <a  class="footer-list__link" href="product.html">ABOUT US</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">NEWS</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">CONTACTS</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">DELIVERY INFORMATION</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">PRIVACY POLICY</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="product.html">TERMS & CONDITIONS</a> </li>
+                                    </ul>
+                                </section>
+                                <section class="footer-block">
+                                    <h3  class="footer-title"  >Contacts</h3>
+                                    <div class="footer-contacts"> <i class="icon ion-ios-telephone-outline"></i> <span class="footer-contacts__inner">+12 345 6789</span> </div>
+                                    <div class="footer-contacts"> <i class="icon ion-ios-email-outline"></i> <a class="footer-contacts__inner" href="mailto:sale@prana.com">sale@prana.com</a> </div>
+                                    <div class="footer-contacts footer-contacts_mod-a"> <i class="icon ion-ios-location-outline"></i>
+                                        <address class="footer-contacts__inner">
+                                            123 Inner Street, Angeles City, Los Angeles , LA USA 21011
+                                        </address>
+                                    </div>
+                                </section>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- end footer-top -->
+
+                        <div class="footer-bottom clearfix">
+                            <div class="row my-grid__row">
+                                <div class="col-xs-12 my-grid__col">
+                                    <div class="copyright">Copyright © 2016 <a class="copyright-link" href="product.html">Made in Prana</a></div>
+                                    <div class="footer-social"> <span class="footer-social__title">Let’s connect:</span>
+                                        <ul class="list-social list-social_mod-a list-unstyled">
+                                            <li class="list-social__item"> <a class="list-social__link" href="product.html"><i class="icon ion-social-tumblr"></i></a> </li>
+                                            <li class="list-social__item"> <a class="list-social__link" href="product.html"><i class="icon ion-social-twitter"></i></a> </li>
+                                            <li class="list-social__item"> <a class="list-social__link" href="product.html"><i class="icon ion-social-vimeo"></i></a> </li>
+                                            <li class="list-social__item"> <a class="list-social__link" href="product.html"><i class="icon ion-social-googleplus"></i></a> </li>
+                                            <li class="list-social__item"> <a class="list-social__link" href="product.html"><i class="icon ion-social-instagram"></i></a> </li>
+                                            <li class="list-social__item"> <a class="list-social__link" href="product.html"><i class="icon ion-social-pinterest"></i></a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- end footer-bottom -->
+                    </footer>
+                </div>
+            </div> <!-- end container -->
+
+
+        </div>
+        <!-- end #wrapper -->
+    </div>
+    <!-- end layout-theme -->
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'sublayout_backend.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0"><center>Daftar Seluruh Barang</center></h3>
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Barang</th>
+                                <th>Harga Barang</th>
+                                <th>jenis Barang</th>
+                                <th>Aksi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if data|length > 0 %}
+                                {% set i = 1 %}
+                                {% for dat in data %}
+                                    <tr>
+                                        <td>{{ i }}</td>
+                                        {#<td>{{ dat.kodeBarang }}</td>#}
+                                        <td>
+                                            {% if dat.namaBarang is defined and not null %}
+                                                {{ dat.namaBarang }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if dat.hargaBarang is defined and not null %}
+                                                {{ dat.hargaBarang }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if dat.jenisBarang is defined and not null %}
+                                                {% if dat.jenisBarang == 1 %}
+                                                    <span class="label label-success">Paket</span>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    {% set i = i + 1 %}
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="6"><center>Tidak ada data</center></td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block customJS %}
+    <script>
+        $('#myTable').dataTable();
+    </script>
+{% endblock %}

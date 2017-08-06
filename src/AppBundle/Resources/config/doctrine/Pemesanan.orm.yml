@@ -1,0 +1,45 @@
+AppBundle\Entity\Pemesanan:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PemesananRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        barang:
+          targetEntity: Barang
+          joinColumn:
+            name: Barang
+            referencedColumnName: id
+            onDelete: "SET NULL"
+
+    fields:
+        namaPemesan:
+            type: string
+            length: 255
+            column: nama_pemesan
+        emailPemesan:
+            type: string
+            length: 255
+            column: email_pemesan
+        alamatPemesan:
+            type: string
+            length: 255
+            column: alamat_pemesan
+        noHp:
+            type: string
+            length: 255
+            column: no_hp
+        totalPemesan:
+            type: string
+            length: 255
+            column: total_pemesan
+        totalHarga:
+            type: string
+            length: 255
+            column: total_harga
+    lifecycleCallbacks: {  }

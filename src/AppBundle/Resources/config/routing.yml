@@ -1,0 +1,30 @@
+app_admin:
+    resource: "@AppBundle/Resources/config/routing/routing_admin.yml"
+    prefix: /admin
+
+app_user:
+    resource: "@AppBundle/Resources/config/routing/routing_user.yml"
+    prefix: /home
+
+app_index:
+    path: /
+    defaults:
+      _controller: AppBundle:Security:loginCheck
+
+app_product:
+    path: /product
+    defaults:
+      _controller: AppBundle:User:product
+
+app_register:
+    path: /register
+    defaults:
+      _controller: AppBundle:User:register
+
+app_pemesanan:
+    path: /pemesanan
+    defaults:
+      _controller: AppBundle:User:createPemesanan
+
+app_logout:
+    path: /logout

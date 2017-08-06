@@ -1,0 +1,29 @@
+app_admin_index:
+    path: /
+    defaults:
+      _controller: AppBundle:Admin:index
+
+app_admin_update_user:
+    path: /update-user/{id}
+    defaults:
+      _controller: AppBundle:Admin:updateUser
+
+app_admin_delete_user:
+    path: /delete-user/{id}
+    defaults:
+      _controller: AppBundle:Admin:deleteUser
+
+app_admin_list_user:
+    path: /list-user
+    defaults:
+      _controller: AppBundle:Admin:getAllUser
+
+app_admin_list_barang:
+    path: /list-barang
+    defaults:
+      _controller: AppBundle:Admin:getAllBarang
+
+app_admin_create_barang:
+    path: /create-barang
+    defaults:
+      _controller: AppBundle:Admin:createBarang

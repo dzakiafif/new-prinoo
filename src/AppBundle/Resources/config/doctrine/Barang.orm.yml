@@ -1,0 +1,23 @@
+AppBundle\Entity\Barang:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\BarangRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        namaBarang:
+            type: string
+            length: 255
+            column: nama_barang
+        hargaBarang:
+            type: string
+            length: 255
+            column: harga_barang
+        jenisBarang:
+            type: integer
+            column: jenis_barang
+    lifecycleCallbacks: {  }
