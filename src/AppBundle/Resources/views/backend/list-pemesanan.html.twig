@@ -1,0 +1,89 @@
+{% extends 'sublayout_backend.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0"><center>Daftar Seluruh Pemesanan</center></h3>
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Jenis Paket</th>
+                                <th>Nama Pemesan</th>
+                                <th>Email Pemesan</th>
+                                <th>Alamat Pemesan</th>
+                                <th>No HP</th>
+                                <th>Total Pemesan</th>
+                                <th>Total Harga</th>
+                                <th>Aksi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if data|length > 0 %}
+                                {% set i = 1 %}
+                                {% for dat in data %}
+                                    <tr>
+                                        <td>{{ i }}</td>
+                                        {#<td>{{ dat.kodeBarang }}</td>#}
+                                        <td>
+                                            {% if dat.barang.jenisBarang is defined and not null %}
+                                                {% if dat.barang.jenisBarang == 1 %}
+                                                    <span class="label label-success">Paket</span>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if dat.namaPemesan is defined and not null %}
+                                                {{ dat.namaPemesan }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if dat.emailPemesan is defined and not null %}
+                                                {{ dat.emailPemesan }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if dat.alamatPemesan is defined and not null %}
+                                                {{ dat.alamatPemesan }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if dat.noHp is defined and not null %}
+                                                {{ dat.noHp }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if dat.totalPemesan is defined and not null %}
+                                                {{ dat.totalPemesan }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if dat.totalHarga is defined and not null %}
+                                                {{ dat.totalHarga }}
+                                            {% endif %}
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    {% set i = i + 1 %}
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="6"><center>Tidak ada data</center></td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block customJS %}
+    <script>
+        $('#myTable').dataTable();
+    </script>
+{% endblock %}

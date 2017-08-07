@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Barang;
+use AppBundle\Entity\Pemesanan;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -94,10 +95,61 @@ class AdminController extends Controller
         return $this->render('AppBundle:backend:list-barang.html.twig',['data'=>$data]);
     }
 
+    public function deleteBarangAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $data = $em->getRepository(Barang::class)->find($id);
+
+        $data->remove($data);
+        $data->flush();
+
+        return $this->redirect($this->generateUrl('app_admin_list_barang'));
+    }
+
+    public function updateBarangAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $data = $em->getRepository(Barang::class)->find($id);
+
+        if($request->getMethod() == 'POST') {
+            if ($data instanceof Barang) {
+                $data->setNamaBarang($request->get('nama_barang'));
+                $data->setHargaBarang($request->get('harga_barang'));
+                $data->setJenisBarang($request->get('jenis_barang'));
+            }
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('app_admin_list_barang'));
+        }
+
+        return $this->render('AppBundle:backend:update-barang.html.twig',['data'=>$data]);
+    }
+
     public function getAllPemesananAction()
     {
+        $em = $this->getDoctrine()->getEntityManager();
 
+        $data = $em->getRepository(Pemesanan::class)->findAll();
+
+        return $this->render('AppBundle:backend:list-pemesanan.html.twig',['data'=>$data]);
     }
+
+    public function deletePemesananAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $data = $em->getRepository(Pemesanan::class)->find($id);
+
+        $em->remove($data);
+
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('app_admin_list_pemesanan'));
+    }
+
 
 
 

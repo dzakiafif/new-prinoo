@@ -13,6 +13,16 @@ app_admin_delete_user:
     defaults:
       _controller: AppBundle:Admin:deleteUser
 
+app_admin_list_pemesanan:
+    path: /list-pemesanan
+    defaults:
+      _controller: AppBundle:Admin:getAllPemesanan
+
+app_admin_delete_pemesanan:
+    path: /delete-pemesanan/{id}
+    defaults:
+      _controller: AppBundle:Admin:deletePemesanan
+
 app_admin_list_user:
     path: /list-user
     defaults:
@@ -27,3 +37,13 @@ app_admin_create_barang:
     path: /create-barang
     defaults:
       _controller: AppBundle:Admin:createBarang
+
+app_admin_delete_barang:
+    path: /delete-barang/{id}
+    defaults:
+      _controller: AppBundle:Admin:deleteBarang
+
+app_admin_update_barang:
+    path: /update-barang/{id}
+    defaults:
+      _controller: AppBundle:Admin:updateBarang
