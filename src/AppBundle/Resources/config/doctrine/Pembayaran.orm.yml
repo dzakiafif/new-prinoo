@@ -1,0 +1,24 @@
+AppBundle\Entity\Pembayaran:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PembayaranRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        namaPembayar:
+            type: string
+            length: 255
+            column: nama_pembayar
+        emailPembayar:
+            type: string
+            length: 255
+            column: email_pembayar
+        pembayaranBerkas:
+            type: string
+            length: 255
+            column: pembayaran_berkas
+    lifecycleCallbacks: {  }

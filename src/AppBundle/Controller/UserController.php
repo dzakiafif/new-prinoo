@@ -8,8 +8,10 @@
 
 namespace AppBundle\Controller;
 
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use AppBundle\Entity\ImageResize;
 use AppBundle\Entity\Barang;
+use AppBundle\Entity\Pembayaran;
 use AppBundle\Entity\Pemesanan;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -101,6 +103,41 @@ class UserController extends Controller
     }
 
 
-    
+    public function createPembayaranAction(Request $request)
+    {
+        $em = $this-getDoctrine()->getEntityManager();
+
+        if($request->getMethod() == 'POST') {
+            $data = new Pembayaran();
+            $data->setNamaPembayar($request->get('nama_pembayar'));
+            $data->setEmailPembayar($request->get('email_pembayar'));
+
+             $file = $request->files->get('berkas');
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                $exAllowed = array('jpg', 'png', 'jpeg');
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                if (in_array($ext, $exAllowed)) {
+                    if ($file instanceof UploadedFile) {
+                        if (!($file->getClientSize() > (1024 * 1024 * 1))) {
+                            ImageResize::createFromFile(
+                                $request->files->get('berkas')->getPathName()
+                            )->saveTo($this->getParameter('profile_directory')['resource'] . '/' . $filename, 20, true);
+                            $data->setProfilePicture($filename);
+                        } else {
+                            return 'gambar tidak boleh lebih dari 1 MB';
+                        }
+                    }
+                } else {
+                    return 'cek kembali extension gambar anda';
+                }
+
+                $em->persist($data);
+                $em->flush();
+
+                return 'upload pembayaran anda telah berhasil dilakukan';
+        }
+
+
+    }
 
 }

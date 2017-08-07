@@ -47,3 +47,8 @@ app_admin_update_barang:
     path: /update-barang/{id}
     defaults:
       _controller: AppBundle:Admin:updateBarang
+
+app_admin_list_pembayaran:
+    path: /list-pembayaran
+    defaults:
+      _controller: AppBundle:Admin:getAllPembayaran      

@@ -49,6 +49,11 @@ class Pemesanan
      */
     private $totalHarga;
 
+    /**
+     * @var int
+     */
+    private $isProses;
+
 
     /**
      * Get id
@@ -212,5 +217,17 @@ class Pemesanan
     public function getTotalHarga()
     {
         return $this->totalHarga;
+    }
+
+    public function getIsProses()
+    {
+        return $this->isProses;
+    }
+
+    public function setIsProses($isProses)
+    {
+        $this->isProses = $isProses;
+
+        return $this;
     }
 }

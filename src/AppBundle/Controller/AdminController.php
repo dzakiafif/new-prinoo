@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Pembayaran;
 use AppBundle\Entity\Barang;
 use AppBundle\Entity\Pemesanan;
 use AppBundle\Entity\User;
@@ -99,7 +100,7 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $data = $em->getRepository(Barang::class)->find($id);
+        $data = $em->getRepository(barang::class)->find($id);
 
         $data->remove($data);
         $data->flush();
@@ -152,7 +153,30 @@ class AdminController extends Controller
 
 
 
+    public function editProsesAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
 
-    
+        $data = $em->getRepository(Pemesanan::class)->find($id);
 
+        if($request->getMethod() == 'POST') {
+            $data->setIsProses($request->get('proses'));
+
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('app_admin_list_pemesanan'));
+        }
+
+        return $this->render('AppBundle:backend:edit-proses.html.twig',['data'=>$data]);
+    }
+
+    public function getAllPembayaranAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $data = $em->getRepository(Pembayaran::class)->findAll();
+
+        return $this->render('AppBundle:backend:list-pembayaran.html.twig',['data'=>$data]);
+    }
 }

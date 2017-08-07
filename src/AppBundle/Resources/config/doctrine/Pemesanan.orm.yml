@@ -42,4 +42,7 @@ AppBundle\Entity\Pemesanan:
             type: string
             length: 255
             column: total_harga
+        isProses:
+            type: integer
+            column: is_proses    
     lifecycleCallbacks: {  }
