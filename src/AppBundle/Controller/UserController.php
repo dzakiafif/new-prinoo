@@ -24,25 +24,50 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
         $barang = $em->getRepository(Barang::class)->findAll();
 
+
         if($request->getMethod() == 'POST') {
-            $pemesanan = new Pemesanan();
-            $pemesanan->setBarang($em->getRepository(Barang::class)->find($request->get('barang')));
-            $pemesanan->setNamaPemesan($request->get('nama'));
-            $pemesanan->setEmailPemesan($request->get('email'));
-            $pemesanan->setAlamatPemesan($request->get('alamat'));
-            $pemesanan->setNoHp($request->get('no_hp'));
-            $pemesanan->setTotalPemesan($request->get('total_pemesan'));
-            $pemesanan->setTotalHarga($request->get('total_harga'));
 
-            $em->persist($pemesanan);
-            $em->flush();
+            if($this->isGranted('ROLE_USER')) {
+                $pemesanan = new Pemesanan();
+                $pemesanan->setUser($user);
+                $pemesanan->setBarang($em->getRepository(Barang::class)->find($request->get('barang')));
+                $pemesanan->setNamaPemesan($request->get('nama'));
+                $pemesanan->setEmailPemesan($request->get('email'));
+                $pemesanan->setAlamatPemesan($request->get('alamat'));
+                $pemesanan->setNoHp($request->get('no_hp'));
+                $pemesanan->setTotalPemesan($request->get('total_pemesan'));
+                $pemesanan->setTotalHarga($request->get('total_harga'));
+                $pemesanan->setIsProses(0);
+                $em->persist($pemesanan);
+                $em->flush();
 
-            return 'data pesanan berhasil masuk';
+                return $this->redirect($this->generateUrl('app_success'));
+            }else {
+                return $this->redirect($this->generateUrl('app_error'));
+            }
+
         }
 
         return $this->render('AppBundle:frontend:home.html.twig',['barang'=>$barang]);
+    }
+
+    public function notificationAction()
+    {
+        return $this->render('AppBundle:frontend:notification.html.twig');
+    }
+
+    public function successAction()
+    {
+        return $this->render('AppBundle:frontend:success.html.twig');
+    }
+
+    public function dashboardAction()
+    {
+        return $this->render('AppBundle:backend:admin.html.twig');
     }
 
     public function productAction()
@@ -105,7 +130,7 @@ class UserController extends Controller
 
     public function createPembayaranAction(Request $request)
     {
-        $em = $this-getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getEntityManager();
 
         if($request->getMethod() == 'POST') {
             $data = new Pembayaran();

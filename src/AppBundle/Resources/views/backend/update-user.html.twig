@@ -1,0 +1,42 @@
+{% extends 'sublayout_backend.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0">
+                        <center>Update Data Pengguna</center>
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        <form method="post">
+                            <div class="form-group">
+                                <label>Nama Depan</label>
+                                <input type="text" name="firstname" id="" class="form-control" value="{% if data.firstname is defined and not null %}{{ data.firstname }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Belakang</label>
+                                <input type="text" name="lastname" id="" class="form-control" value="{% if data.lastname is defined and not null %}{{ data.lastname }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" id="" class="form-control" value="{% if data.email is defined and not null %}{{ data.email }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <input type="text" name="address" id="" class="form-control" value="{% if data.address is defined and not null %}{{ data.address }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label>Nomor Telepon</label>
+                                <input type="text" name="no_telp" id="" class="form-control" value="{% if data.noTelp is defined and not null %}{{ data.noTelp }}{% endif %}">
+                            </div>
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

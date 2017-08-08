@@ -20,7 +20,7 @@ class SecurityController extends Controller
         if ($this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('app_admin_index');
         } elseif($this->isGranted('ROLE_USER')) {
-            return $this->redirectToRoute('app_user_home');
+            return $this->redirectToRoute('app_home_index');
         }
 
         $authenticationUtils = $this->get('security.authentication_utils');
@@ -42,9 +42,9 @@ class SecurityController extends Controller
         if($this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('app_admin_index');
         }elseif($this->isGranted('ROLE_USER')) {
-            return $this->redirectToRoute('app_user_home');
+            return $this->redirectToRoute('app_home_index');
         }elseif($this->isGranted('IS_AUTHENTICATED_ANONYMOUSLY')) {
-            return $this->redirectToRoute('app_user_home');
+            return $this->redirectToRoute('app_home_index');
         }
     }
 

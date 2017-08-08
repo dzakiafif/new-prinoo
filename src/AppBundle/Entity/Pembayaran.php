@@ -29,6 +29,11 @@ class Pembayaran
      */
     private $pembayaranBerkas;
 
+    /**
+     * @var int
+     */
+    private $isConfirm;
+
 
     /**
      * Get id
@@ -107,5 +112,22 @@ class Pembayaran
     public function getPembayaranBerkas()
     {
         return $this->pembayaranBerkas;
+    }
+
+
+    /**
+     * @param $isConfirm
+     * @return $this
+     */
+    public function setIsConfirm($isConfirm)
+    {
+        $this->isConfirm = $isConfirm;
+
+        return $this;
+    }
+
+    public function getIsConfirm()
+    {
+        return $this->isConfirm;
     }
 }

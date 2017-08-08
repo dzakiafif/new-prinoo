@@ -10,6 +10,14 @@ AppBundle\Entity\Pemesanan:
                 strategy: AUTO
 
     manyToOne:
+        user:
+          targetEntity: User
+          joinColumn:
+            name: User
+            referencedColumnName: id
+            onDelete: "SET NULL"
+
+    manyToOne:
         barang:
           targetEntity: Barang
           joinColumn:

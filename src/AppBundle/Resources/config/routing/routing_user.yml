@@ -1,4 +1,4 @@
 app_user_home:
     path: /
     defaults:
-      _controller: AppBundle:User:index
+      _controller: AppBundle:User:dashboard

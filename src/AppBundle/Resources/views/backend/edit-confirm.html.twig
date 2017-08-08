@@ -1,0 +1,28 @@
+{% extends 'sublayout_backend.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0">Edit Konfirmasi Pembayaran</h3>
+                </div>
+                <div class="row">
+                    <form method="post">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <label>Belum Dikonfirmasi</label>
+                                <input type="text" name="confirm" id="" class="form-control" value="0" {% if data.isConfirm is defined and not null %}{% if data.isConfirm == 0 %}checked{% endif %}{% endif %}>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Sudah Dikonfirmasi</label>
+                                <input type="text" name="confirm" id="" class="form-control" value="1" {% if data.isConfirm is defined and not null %}{% if data.isConfirm == 1 %}checked{% endif %}{% endif %}>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary waves-effect">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

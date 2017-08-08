@@ -51,4 +51,19 @@ app_admin_update_barang:
 app_admin_list_pembayaran:
     path: /list-pembayaran
     defaults:
-      _controller: AppBundle:Admin:getAllPembayaran      
+      _controller: AppBundle:Admin:getAllPembayaran
+
+app_admin_edit_confirm:
+    path: /edit-confirm/{id}
+    defaults:
+      _controller: AppBundle:Admin:editConfirm
+
+app_admin_delete_pembayaran:
+    path: /delete-pembayaran/{id}
+    defaults:
+      _controller: AppBundle:Admin:deletePembayaran
+
+app_admin_edit_proses:
+    path: /edit-proses/{id}
+    defaults:
+       _controller: AppBundle:Admin:editProses

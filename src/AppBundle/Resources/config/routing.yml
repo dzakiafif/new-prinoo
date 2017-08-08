@@ -4,12 +4,26 @@ app_admin:
 
 app_user:
     resource: "@AppBundle/Resources/config/routing/routing_user.yml"
+    prefix: /user
+
+app_home:
+    resource: "@AppBundle/Resources/config/routing/routing_home.yml"
     prefix: /home
 
 app_index:
     path: /
     defaults:
       _controller: AppBundle:Security:loginCheck
+
+app_error:
+    path: /error
+    defaults:
+      _controller: AppBundle:User:notification
+
+app_success:
+    path: /order-success
+    defaults:
+      _controller: Appbundle:User:success
 
 app_product:
     path: /product

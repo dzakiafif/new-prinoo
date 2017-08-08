@@ -21,4 +21,7 @@ AppBundle\Entity\Pembayaran:
             type: string
             length: 255
             column: pembayaran_berkas
+        isConfirm:
+            type: integer
+            column: is_confirm
     lifecycleCallbacks: {  }

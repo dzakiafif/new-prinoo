@@ -12,26 +12,33 @@ AppBundle\Entity\User:
         firstname:
             type: string
             length: 255
+            nullable: true
         lastname:
             type: string
             length: 255
+            nullable: true
         username:
             type: string
             length: 255
             unique: true
+            nullable: true
         email:
             type: string
             length: 255
+            nullable: true
         password:
             type: string
             length: 255
+            nullable: true
         address:
             type: string
             length: 255
+            nullable: true
         noTelp:
             type: string
             length: 255
             column: no_telp
+            nullable: true
         roles:
             type: text
     lifecycleCallbacks: {  }

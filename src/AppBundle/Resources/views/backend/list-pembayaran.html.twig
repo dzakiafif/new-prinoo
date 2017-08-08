@@ -34,7 +34,8 @@
                                             {% endif %}    
                                         </td>
                                         <td>
-                                            
+                                            <a href="{{ path('app_admin_edit_confirm',{id: dat.id}) }}" class="btn btn-primary btn-xs">EDIT</a>
+                                            <a href="{{ path('app_admin_delete_pembayaran',{id: dat.id}) }}" class="btn btn-danger btn-xs">DELETE</a>
                                         </td>
                                     </tr>
                                     {% set i = i + 1 %}

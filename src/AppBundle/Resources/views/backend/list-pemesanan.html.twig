@@ -14,10 +14,7 @@
                                 <th>Jenis Paket</th>
                                 <th>Nama Pemesan</th>
                                 <th>Email Pemesan</th>
-                                <th>Alamat Pemesan</th>
-                                <th>No HP</th>
-                                <th>Total Pemesan</th>
-                                <th>Total Harga</th>
+                                <th>Proses</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -46,26 +43,20 @@
                                             {% endif %}
                                         </td>
                                         <td>
-                                            {% if dat.alamatPemesan is defined and not null %}
-                                                {{ dat.alamatPemesan }}
+                                            {% if dat.isProses is defined and not null %}
+                                              {% if dat.isProses == 0 %}
+                                                  <span class="label label-danger">Belum Diproses</span>
+                                              {% elseif dat.isProses == 1 %}
+                                                  <span class="label label-warning">Sedang Diproses</span>
+                                              {% else %}
+                                                  <span class="label label-success">Sudah Diproses</span>
+                                              {% endif %}
                                             {% endif %}
                                         </td>
                                         <td>
-                                            {% if dat.noHp is defined and not null %}
-                                                {{ dat.noHp }}
-                                            {% endif %}
+                                            <a href="{{ path('app_admin_edit_proses',{id: dat.id}) }}" class="btn btn-success btn-xs">EDIT</a>
+                                            <a href="{{ path('app_admin_delete_pemesanan',{id: dat.id}) }}" class="btn btn-danger btn-xs">DELETE</a>
                                         </td>
-                                        <td>
-                                            {% if dat.totalPemesan is defined and not null %}
-                                                {{ dat.totalPemesan }}
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if dat.totalHarga is defined and not null %}
-                                                {{ dat.totalHarga }}
-                                            {% endif %}
-                                        </td>
-                                        <td></td>
                                     </tr>
                                     {% set i = i + 1 %}
                                 {% endfor %}

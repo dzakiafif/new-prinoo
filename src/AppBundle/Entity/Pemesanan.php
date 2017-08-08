@@ -17,6 +17,11 @@ class Pemesanan
     /**
      * @var int
      */
+    private $user;
+
+    /**
+     * @var int
+     */
     private $barang;
 
     /**
@@ -63,6 +68,25 @@ class Pemesanan
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param User $user
+     * @return $this
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**

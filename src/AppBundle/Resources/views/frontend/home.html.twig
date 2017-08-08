@@ -16,9 +16,6 @@
         <div id="loading-text">LOADING</div>
     </div>
     <!--LOADER Ends-->
-
-
-
     <header class="transparent">
         <div class="container-fluid">
             <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
@@ -36,7 +33,15 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right" data-in="slideIn" data-out="fadeOut">
                         {#<li><a href="portfolio.html">Work</a></li>#}
-                        <li class="last"><a href="{{ path('app_login') }}">Login</a></li>
+                        {% if app.user.username is not defined %}
+                            <li class="last"><a href="{{ path('app_login') }}">Login</a></li>
+                        {% else %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="last"><a href="{{ path('app_admin_index') }}">Dashboard</a></li>
+                                {% else %}
+                                <li class="last"><a href="{{ path('app_user_home') }}">Dashboard</a></li>
+                            {% endif %}
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="sidebar_menu">
@@ -52,7 +57,6 @@
             </nav>
         </div>
     </header>
-
 
 
     <!--Slider Main-->
@@ -422,7 +426,7 @@
                 <div class="col-sm-12 margin_top wow fadeIn" data-wow-delay="900ms">
                     <h2 class="text-capitalize bottom25"><center>Tertarik memesan di kami?</center></h2>
                     <h2 class="text-capitalize bottom25"><center>Silahkan isi form dibawah ini</center></h2>
-                    <form class="callus">
+                    <form class="callus" method="post">
                         <div class="form-group">
                             <select name="barang" id="" class="form-control">
                             <option value="">-- Pilih Paket --</option>
@@ -450,7 +454,7 @@
                         <div class="form-group">
                             <input type="text" name="total_harga" id="" class="form-control" placeholder="Total Harga">
                         </div>
-                        <a class="btn_default btn_border text-uppercase">submit</a>
+                        <button class="btn_default btn_border text-uppercase">SUBMIT</button>
                     </form>
                 </div>
             </div>

@@ -45,15 +45,19 @@ class AdminController extends Controller
             if($data instanceof User) {
                 $data->setFirstname($request->get('firstname'));
                 $data->setLastname($request->get('lastname'));
-                $data->setUsername($request->get('username'));
+//                $data->setUsername($request->get('username'));
                 $data->setEmail($request->get('email'));
-                $data->setPassword($request->get('password'));
+//                $data->setPassword($request->get('password'));
                 $data->setNoTelp($request->get('no_telp'));
             }
 
             $em->persist($data);
             $em->flush();
+
+            return $this->redirect($this->generateUrl('app_admin_list_user'));
         }
+
+        return $this->render('AppBundle:backend:update-user.html.twig',['data'=>$data]);
     }
 
     public function deleteUserAction($id)
@@ -65,7 +69,20 @@ class AdminController extends Controller
         $em->remove($data);
         $em->flush();
 
-        return 'data berhasil dihapus';
+        return $this->redirect($this->generateUrl('app_admin_list_user'));
+    }
+
+    public function updatePemesananAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $data = $em->getRepository(Pemesanan::class)->find($id);
+
+        if($request->getMethod() == 'POST') {
+            if($data instanceof Pemesanan) {
+                $data->setNamaPemesan($request->get('nama_pemesanan'));
+            }
+        }
     }
     
     public function createBarangAction(Request $request)
@@ -151,8 +168,6 @@ class AdminController extends Controller
         return $this->redirect($this->generateUrl('app_admin_list_pemesanan'));
     }
 
-
-
     public function editProsesAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -178,5 +193,38 @@ class AdminController extends Controller
         $data = $em->getRepository(Pembayaran::class)->findAll();
 
         return $this->render('AppBundle:backend:list-pembayaran.html.twig',['data'=>$data]);
+    }
+
+    public function editConfirmAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $data = $em->getRepository(Pembayaran::class)->find($id);
+
+        if($request->getMethod() == 'POST') {
+            if($data instanceof Pembayaran) {
+                $data->setIsConfirm($request->get('confirm'));
+            }
+
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('app_admin_list_pembayaran'));
+        }
+
+        return $this->render('AppBundle:backend:edit-confirm.html.twig',['data'=>$data]);
+    }
+
+    public function deletePembayaranAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $data = $em->getRepository(Pembayaran::class)->find($id);
+
+        $em->remove($data);
+
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('app_admin_list_pembayaran'));
     }
 }
