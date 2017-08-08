@@ -8,6 +8,13 @@ AppBundle\Entity\Pembayaran:
             id: true
             generator:
                 strategy: AUTO
+    manyToOne:
+        user:
+           targetEntity: User
+           joinColumn:
+                name: User
+                referencedColumnName: id
+                onDelete: "SET NULL"
     fields:
         namaPembayar:
             type: string

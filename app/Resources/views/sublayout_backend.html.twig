@@ -116,6 +116,12 @@
                         <li>
                             <a href="{{ path('app_user_home') }}" class="waves-effect"><i class="mdi mdi-av-timer fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard</span></a>
                         </li>
+                        <li><a href="#" class="waves-effect"><i class="mdi mdi-clipboard-text fa-fw"></i> <span class="hide-menu">Pembayaran Management<span class="fa arrow"></span></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="{{ path('app_user_create_pembayaran') }}">Input Pembayaran</a></li>
+                                <li><a href="{{ path('app_user_pembayaran') }}">Daftar Pembayaran</a></li>
+                            </ul>
+                        </li>
                     {% endif %}
                 </ul>
             </div>

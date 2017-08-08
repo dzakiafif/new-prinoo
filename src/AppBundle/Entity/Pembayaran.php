@@ -15,6 +15,11 @@ class Pembayaran
     private $id;
 
     /**
+     * @var int
+     */
+    private $user;
+
+    /**
      * @var string
      */
     private $namaPembayar;
@@ -43,6 +48,25 @@ class Pembayaran
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param User $user
+     * @return $this
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**

@@ -132,10 +132,18 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        
+        
         if($request->getMethod() == 'POST') {
             $data = new Pembayaran();
+            $data->setUser($user);
             $data->setNamaPembayar($request->get('nama_pembayar'));
             $data->setEmailPembayar($request->get('email_pembayar'));
+
+            if (!is_dir($this->getParameter('pembayaran_directory')['resource'])) {
+                @mkdir($this->getParameter('pembayaran_directory')['resource'], 0777, true);
+            }
 
              $file = $request->files->get('berkas');
                 $filename = md5(uniqid()) . '.' . $file->guessExtension();
@@ -146,8 +154,8 @@ class UserController extends Controller
                         if (!($file->getClientSize() > (1024 * 1024 * 1))) {
                             ImageResize::createFromFile(
                                 $request->files->get('berkas')->getPathName()
-                            )->saveTo($this->getParameter('profile_directory')['resource'] . '/' . $filename, 20, true);
-                            $data->setProfilePicture($filename);
+                            )->saveTo($this->getParameter('pembayaran_directory')['resource'] . '/' . $filename, 20, true);
+                            $data->setPembayaranBerkas($filename);
                         } else {
                             return 'gambar tidak boleh lebih dari 1 MB';
                         }
@@ -156,11 +164,26 @@ class UserController extends Controller
                     return 'cek kembali extension gambar anda';
                 }
 
+                $data->setIsConfirm(0);
+
                 $em->persist($data);
                 $em->flush();
 
-                return 'upload pembayaran anda telah berhasil dilakukan';
+                return $this->redirect($this->generateUrl('app_user_pembayaran'));
         }
+        return $this->render('AppBundle:backend:create-pembayaran.html.twig');
+
+    }
+
+    public function listPembayaranAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $data = $em->getRepository(Pembayaran::class)->findByUser($user->getId());
+
+        return $this->render('AppBundle:backend:user-pembayaran.html.twig',['data'=>$data]);
 
 
     }

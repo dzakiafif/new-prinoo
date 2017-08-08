@@ -2,3 +2,13 @@ app_user_home:
     path: /
     defaults:
       _controller: AppBundle:User:dashboard
+
+app_user_pembayaran:
+    path: /list-pembayaran
+    defaults:
+      _controller: AppBundle:User:listPembayaran
+
+app_user_create_pembayaran:
+    path: /create-pembayaran
+    defaults:
+      _controller: AppBundle:User:createPembayaran
