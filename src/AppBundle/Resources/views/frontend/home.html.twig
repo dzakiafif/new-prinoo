@@ -428,10 +428,10 @@
                     <h2 class="text-capitalize bottom25"><center>Silahkan isi form dibawah ini</center></h2>
                     <form class="callus" method="post">
                         <div class="form-group">
-                            <select name="barang" id="" class="form-control">
+                            <select name="barang" id="harga" class="form-control">
                             <option value="">-- Pilih Paket --</option>
                             {% for item in barang %}
-                            <option value="{{ item.id }}">{{ item.namaBarang }}</option>
+                            <option value="{{ item.id }}" data-price="{{ item.hargaBarang }}" selected="">{{ item.namaBarang }}</option>
                             {% endfor %}
                             </select>
                             {#<input type="text" class="form-control" placeholder="Your Name">#}
@@ -449,10 +449,10 @@
                             <input type="text" name="no_hp" id="" class="form-control" placeholder="Masukkan No.Hp">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="total_pemesan" id="" class="form-control" placeholder="Masukkan Total Pemesanan">
+                            <input type="number" name="total_pemesan" id="jumlah" class="form-control" placeholder="Masukkan Total Pemesanan">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="total_harga" id="" class="form-control" placeholder="Total Harga">
+                            <input type="text" name="total_harga" id="total" class="form-control" placeholder="Total Harga">
                         </div>
                         <button class="btn_default btn_border text-uppercase">SUBMIT</button>
                     </form>
@@ -515,8 +515,16 @@
         {#</div>#}
     {#</footer>#}
 {% endblock %}
-{% block customJS %}
+{% block javascript %}
     <script>
+        $('#jumlah').keyup(function() {
+           var harga = $('#harga option:selected').attr('data-price');
+           var jumlah = $(this).val();
 
+//            console.log(harga * jumlah);
+
+           $('#total').val(harga * jumlah);
+
+        });
     </script>
 {% endblock %}

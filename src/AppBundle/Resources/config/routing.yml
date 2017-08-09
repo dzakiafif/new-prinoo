@@ -23,7 +23,7 @@ app_error:
 app_success:
     path: /order-success
     defaults:
-      _controller: Appbundle:User:success
+      _controller: AppBundle:User:success
 
 app_product:
     path: /product
