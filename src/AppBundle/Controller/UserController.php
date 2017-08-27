@@ -66,6 +66,11 @@ class UserController extends Controller
         return $this->render('AppBundle:backend:admin.html.twig');
     }
 
+    public function faqAction()
+    {
+        return $this->render('AppBundle:frontend:faq.html.twig');
+    }
+
     public function productAction()
     {
         return $this->render('AppBundle:frontend:product.html.twig');

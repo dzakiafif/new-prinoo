@@ -10,6 +10,11 @@ app_home:
     resource: "@AppBundle/Resources/config/routing/routing_home.yml"
     prefix: /home
 
+app_faq:
+    path: /faq
+    defaults:
+      _controller: AppBundle:User:faq
+
 app_index:
     path: /
     defaults:
