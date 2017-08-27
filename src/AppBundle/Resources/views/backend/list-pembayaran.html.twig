@@ -12,39 +12,76 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama Pembayar</th>
-                                <th>Email Pembayar</th>
+                                <th>Alamat Pembayar</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
+                            {% set i = 1 %}
                             {% if data|length > 0 %}
-                                {% set i = 1 %}
-                                {% for dat in data %}
+                                {% for item in data %}
                                     <tr>
                                         <td>{{ i }}</td>
-                                        {#<td>{{ dat.kodeBarang }}</td>#}
                                         <td>
-                                            {% if dat.namaPembayar is defined and not null %}
-                                                {{ dat.namaPembayar }}
-                                            {% endif %}    
+                                            {% if item.user is not null %}
+                                                {{ item.user.firstName }}&nbsp;{{ item.user.lastName }}
+                                            {% endif %}
                                         </td>
                                         <td>
-                                            {% if dat.emailPembayar is defined and not null %}
-                                                {{ dat.emailPembayar }}
-                                            {% endif %}    
+                                            {% if item.user is not null %}
+                                                {{ item.user.address }}
+                                            {% endif %}
                                         </td>
                                         <td>
-                                            <a href="{{ path('app_admin_edit_confirm',{id: dat.id}) }}" class="btn btn-primary btn-xs">EDIT</a>
-                                            <a href="{{ path('app_admin_delete_pembayaran',{id: dat.id}) }}" class="btn btn-danger btn-xs">DELETE</a>
+                                            {% if item.isConfirm is not null %}
+                                                {% if item.isConfirm == 0 %}
+                                                    <span class="label label-danger">Belum Dikonfirmasi</span>
+                                                {% else %}
+                                                    <span class="label label-success">Sudah Dikonfirmasi</span>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('app_admin_edit_confirm',{id: item.id}) }}" class="btn btn-primary btn-xs">EDIT</a>
+                                            <a href="{{ path('app_admin_delete_pembayaran',{id: item.id}) }}" class="btn btn-danger btn-xs">DELETE</a>
                                         </td>
                                     </tr>
                                     {% set i = i + 1 %}
                                 {% endfor %}
                             {% else %}
                                 <tr>
-                                    <td colspan="9"><center>Tidak ada data</center></td>
+                                    <td colspan="4"><center>Tidak ada data</center></td>
                                 </tr>
                             {% endif %}
+                            {#{% if data|length > 0 %}#}
+                                {#{% set i = 1 %}#}
+                                {#{% for dat in data %}#}
+                                    {#<tr>#}
+                                        {#<td>{{ i }}</td>#}
+                                        {#<td>{{ dat.kodeBarang }}</td>#}
+                                        {#<td>#}
+                                            {#{% if dat.user is defined and not null %}#}
+                                                {#{{ dat.user.firstName }}&nbsp;{{ data.user.lastName }}#}
+                                            {#{% endif %}    #}
+                                        {#</td>#}
+                                        {#<td>#}
+                                            {#{% if dat.user is defined and not null %}#}
+                                                {#{{ dat.user.address }}#}
+                                            {#{% endif %}    #}
+                                        {#</td>#}
+                                        {#<td>#}
+                                            {#<a href="{{ path('app_admin_edit_confirm',{id: dat.id}) }}" class="btn btn-primary btn-xs">EDIT</a>#}
+                                            {#<a href="{{ path('app_admin_delete_pembayaran',{id: dat.id}) }}" class="btn btn-danger btn-xs">DELETE</a>#}
+                                        {#</td>#}
+                                    {#</tr>#}
+                                    {#{% set i = i + 1 %}#}
+                                {#{% endfor %}#}
+                            {#{% else %}#}
+                                {#<tr>#}
+                                    {#<td colspan="9"><center>Tidak ada data</center></td>#}
+                                {#</tr>#}
+                            {#{% endif %}#}
                             </tbody>
                         </table>
                     </div>

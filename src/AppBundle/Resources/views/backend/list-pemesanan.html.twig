@@ -13,7 +13,7 @@
                                 <th>No.</th>
                                 <th>Jenis Paket</th>
                                 <th>Nama Pemesan</th>
-                                <th>Email Pemesan</th>
+                                <th>Alamat Pemesan</th>
                                 <th>Proses</th>
                                 <th>Aksi</th>
                             </tr>
@@ -33,13 +33,13 @@
                                             {% endif %}
                                         </td>
                                         <td>
-                                            {% if dat.namaPemesan is defined and not null %}
-                                                {{ dat.namaPemesan }}
+                                            {% if dat.user is defined and not null %}
+                                                {{ dat.user.firstName }}&nbsp;{{ dat.user.lastName }}
                                             {% endif %}
                                         </td>
                                         <td>
-                                            {% if dat.emailPemesan is defined and not null %}
-                                                {{ dat.emailPemesan }}
+                                            {% if dat.user is defined and not null %}
+                                                {{ dat.user.address }}
                                             {% endif %}
                                         </td>
                                         <td>

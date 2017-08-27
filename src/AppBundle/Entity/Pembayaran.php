@@ -20,14 +20,9 @@ class Pembayaran
     private $user;
 
     /**
-     * @var string
+     * @var int
      */
-    private $namaPembayar;
-
-    /**
-     * @var string
-     */
-    private $emailPembayar;
+    private $barang;
 
     /**
      * @var string
@@ -70,49 +65,22 @@ class Pembayaran
     }
 
     /**
-     * Set namaPembayar
-     *
-     * @param string $namaPembayar
-     * @return Pembayaran
+     * @param Barang $barang
+     * @return $this
      */
-    public function setNamaPembayar($namaPembayar)
+    public function setBarang(Barang $barang)
     {
-        $this->namaPembayar = $namaPembayar;
+        $this->barang = $barang;
 
         return $this;
     }
 
     /**
-     * Get namaPembayar
-     *
-     * @return string 
+     * @return int
      */
-    public function getNamaPembayar()
+    public function getBarang()
     {
-        return $this->namaPembayar;
-    }
-
-    /**
-     * Set emailPembayar
-     *
-     * @param string $emailPembayar
-     * @return Pembayaran
-     */
-    public function setEmailPembayar($emailPembayar)
-    {
-        $this->emailPembayar = $emailPembayar;
-
-        return $this;
-    }
-
-    /**
-     * Get emailPembayar
-     *
-     * @return string 
-     */
-    public function getEmailPembayar()
-    {
-        return $this->emailPembayar;
+        return $this->barang;
     }
 
     /**

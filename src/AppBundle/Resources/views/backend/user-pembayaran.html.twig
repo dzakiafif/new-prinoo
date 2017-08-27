@@ -11,8 +11,10 @@
                             <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Nama Pembayar</th>
-                                <th>Email Pembayar</th>
+                                <th>Nama Pengguna</th>
+                                <th>Nama Paket</th>
+                                <th>Alamat</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -20,15 +22,27 @@
                             {% if data|length > 0 %}
                                 {% set i = 1 %}
                                 <tr>
-                                    <td>{% if data.namaPembayar is defined and not null %}{{ data.namaPembayar }}{% endif %}</td>
-                                    <td>{% if data.emailPembayar is defined and not null %}{{ data.emailPembayar }}{% endif %}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ i }}</td>
+                                    <td>{% if data.user is not null %}{{ data.user.firstName }}&nbsp;{{ data.user.lastName }}{% endif %}</td>
+                                    <td>{% if data.barang is not null %}{{ data.barang.namaBarang }}{% endif %}</td>
+                                    <td>{% if data.user is not null %}{{ data.user.address }}{% endif %}</td>
+                                    <td>
+                                        {% if data.isConfirm is not null %}
+                                            {% if data.isConfirm == 0 %}
+                                                <span class="label label-error">Belum Diproses</span>
+                                            {% else %}
+                                                <span class="label label-success">Sudah Diproses</span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('app_user_delete_pembayaran') }}" class="btn btn-danger btn-xs">DELETE</a>
+                                    </td>
                                 </tr>
                                 {% set i = i + 1 %}
                             {% else %}
                                 <tr>
-                                    <td colspan="4">Tidak ada data</td>
+                                    <td colspan="6"><center>Tidak ada data</center></td>
                                 </tr>
                             {% endif %}
                             </tbody>
@@ -38,4 +52,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block customJS %}
+    <script>
+        $('#myTable').dataTable();
+    </script>
 {% endblock %}

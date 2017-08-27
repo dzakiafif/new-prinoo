@@ -117,10 +117,10 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $data = $em->getRepository(barang::class)->find($id);
+        $data = $em->getRepository(Barang::class)->find($id);
 
-        $data->remove($data);
-        $data->flush();
+        $em->remove($data);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('app_admin_list_barang'));
     }

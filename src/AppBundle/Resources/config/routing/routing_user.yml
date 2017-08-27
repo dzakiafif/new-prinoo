@@ -12,3 +12,18 @@ app_user_create_pembayaran:
     path: /create-pembayaran
     defaults:
       _controller: AppBundle:User:createPembayaran
+
+app_user_pemesanan:
+    path: /list-pemesanan
+    defaults:
+      _controller: AppBundle:User:listPemesanan
+
+app_user_update_pemesanan:
+    path: /update-pemesanan
+    defaults:
+      _controller: AppBundle:User:updatePemesanan
+
+app_user_delete_pembayaran:
+    path: /delete-pembayaran
+    defaults:
+      _controller: AppBundle:User:deletePembayaran

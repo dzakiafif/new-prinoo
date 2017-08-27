@@ -1,0 +1,53 @@
+{% extends 'sublayout_backend.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0">
+                        <center>Update Data Pengguna</center>
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="harga">Harga</label>
+                                <select name="barang" id="harga" class="form-control">
+                                    <option value="null">-- Pilih Paket --</option>
+                                    {% for item in barang %}
+                                        <option value="{{ item.id }}" data-price="{{ item.hargaBarang }}" selected="">{{ item.namaBarang }}</option>
+                                    {% endfor %}
+                                </select>
+                                {#<input type="text" class="form-control" placeholder="Your Name">#}
+                            </div>
+                            <div class="form-group">
+                                <label for="jumlah">Total Pemesanan</label>
+                                <input type="number" name="total_pemesan" id="jumlah" class="form-control" placeholder="Masukkan Total Pemesanan">
+                            </div>
+                            <div class="form-group">
+                                <label for="total">Total Harga</label>
+                                <input type="text" name="total_harga" id="total" class="form-control" placeholder="Total Harga">
+                            </div>
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block customJS %}
+    <script>
+        $('#jumlah').keyup(function() {
+            var harga = $('#harga option:selected').attr('data-price');
+            var jumlah = $(this).val();
+
+//            console.log(harga * jumlah);
+
+            $('#total').val(harga * jumlah);
+
+        });
+    </script>
+{% endblock %}

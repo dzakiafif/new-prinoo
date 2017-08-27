@@ -15,15 +15,14 @@ AppBundle\Entity\Pembayaran:
                 name: User
                 referencedColumnName: id
                 onDelete: "SET NULL"
+        barang:
+            targetEntity: Barang
+            joinColumn:
+                name: Barang
+                referencedColumnName: id
+                onDelete: "SET NULL"
+
     fields:
-        namaPembayar:
-            type: string
-            length: 255
-            column: nama_pembayar
-        emailPembayar:
-            type: string
-            length: 255
-            column: email_pembayar
         pembayaranBerkas:
             type: string
             length: 255

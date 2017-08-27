@@ -12,11 +12,11 @@
                         <div class="col-md-12">
                             <div class="col-md-6">
                                 <label>Belum Dikonfirmasi</label>
-                                <input type="text" name="confirm" id="" class="form-control" value="0" {% if data.isConfirm is defined and not null %}{% if data.isConfirm == 0 %}checked{% endif %}{% endif %}>
+                                <input type="radio" name="confirm" id="" class="form-control" value="0" {% if data.isConfirm is defined and not null %}{% if data.isConfirm == 0 %}checked{% endif %}{% endif %}>
                             </div>
                             <div class="col-md-6">
                                 <label>Sudah Dikonfirmasi</label>
-                                <input type="text" name="confirm" id="" class="form-control" value="1" {% if data.isConfirm is defined and not null %}{% if data.isConfirm == 1 %}checked{% endif %}{% endif %}>
+                                <input type="radio" name="confirm" id="" class="form-control" value="1" {% if data.isConfirm is defined and not null %}{% if data.isConfirm == 1 %}checked{% endif %}{% endif %}>
                             </div>
                         </div>
                         <button class="btn btn-primary waves-effect">SUBMIT</button>

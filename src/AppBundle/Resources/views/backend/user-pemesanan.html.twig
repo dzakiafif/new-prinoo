@@ -1,0 +1,81 @@
+{% extends 'sublayout_backend.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0"><center>Daftar Pemesanan</center></h3>
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Pemesanan</th>
+                                <th>Alamat</th>
+                                <th>No.HP</th>
+                                <th>Nama Paket</th>
+                                <th>Jumlah Pesanan</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% set i = 1 %}
+                            {% if data|length > 0 %}
+                                {% for item in data %}
+                                    <tr>
+                                        <td>{{ i }}</td>
+                                        <td>
+                                            {% if item.user is not null %}
+                                                {{ item.user.firstName }}&nbsp;{{ item.user.lastName }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if item.user is not null %}
+                                                {{ item.user.address }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if item.user is not null %}
+                                                {{ item.user.noTelp }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if item.barang is not null %}
+                                                {{ item.barang.namaBarang }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if item.totalPemesan is not null %}
+                                                {{ item.totalPemesan }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if item.isProses is not null %}
+                                                {% if item.isProses == 0 %}
+                                                    <span class="label label-danger">Belum Diverifikasi</span>
+                                                {% else %}
+                                                    <span class="label label-success">Verifikasi</span>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('app_user_update_pemesanan') }}" class="btn btn-success btn-xs">UPDATE</a>
+                                        </td>
+                                    </tr>
+                                    {% set i = i + 1 %}
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="6"><center>Tidak ada data</center></td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

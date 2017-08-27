@@ -27,26 +27,6 @@ class Pemesanan
     /**
      * @var string
      */
-    private $namaPemesan;
-
-    /**
-     * @var string
-     */
-    private $emailPemesan;
-
-    /**
-     * @var string
-     */
-    private $alamatPemesan;
-
-    /**
-     * @var string
-     */
-    private $noHp;
-
-    /**
-     * @var string
-     */
     private $totalPemesan;
 
     /**
@@ -103,98 +83,6 @@ class Pemesanan
     public function getBarang()
     {
         return $this->barang;
-    }
-
-    /**
-     * Set namaPemesan
-     *
-     * @param string $namaPemesan
-     * @return Pemesanan
-     */
-    public function setNamaPemesan($namaPemesan)
-    {
-        $this->namaPemesan = $namaPemesan;
-
-        return $this;
-    }
-
-    /**
-     * Get namaPemesan
-     *
-     * @return string 
-     */
-    public function getNamaPemesan()
-    {
-        return $this->namaPemesan;
-    }
-
-    /**
-     * Set emailPemesan
-     *
-     * @param string $emailPemesan
-     * @return Pemesanan
-     */
-    public function setEmailPemesan($emailPemesan)
-    {
-        $this->emailPemesan = $emailPemesan;
-
-        return $this;
-    }
-
-    /**
-     * Get emailPemesan
-     *
-     * @return string 
-     */
-    public function getEmailPemesan()
-    {
-        return $this->emailPemesan;
-    }
-
-    /**
-     * Set alamatPemesan
-     *
-     * @param string $alamatPemesan
-     * @return Pemesanan
-     */
-    public function setAlamatPemesan($alamatPemesan)
-    {
-        $this->alamatPemesan = $alamatPemesan;
-
-        return $this;
-    }
-
-    /**
-     * Get alamatPemesan
-     *
-     * @return string 
-     */
-    public function getAlamatPemesan()
-    {
-        return $this->alamatPemesan;
-    }
-
-    /**
-     * Set noHp
-     *
-     * @param string $noHp
-     * @return Pemesanan
-     */
-    public function setNoHp($noHp)
-    {
-        $this->noHp = $noHp;
-
-        return $this;
-    }
-
-    /**
-     * Get noHp
-     *
-     * @return string 
-     */
-    public function getNoHp()
-    {
-        return $this->noHp;
     }
 
     /**

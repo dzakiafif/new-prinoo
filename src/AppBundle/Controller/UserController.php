@@ -35,10 +35,6 @@ class UserController extends Controller
                 $pemesanan = new Pemesanan();
                 $pemesanan->setUser($user);
                 $pemesanan->setBarang($em->getRepository(Barang::class)->find($request->get('barang')));
-                $pemesanan->setNamaPemesan($request->get('nama'));
-                $pemesanan->setEmailPemesan($request->get('email'));
-                $pemesanan->setAlamatPemesan($request->get('alamat'));
-                $pemesanan->setNoHp($request->get('no_hp'));
                 $pemesanan->setTotalPemesan($request->get('total_pemesan'));
                 $pemesanan->setTotalHarga($request->get('total_harga'));
                 $pemesanan->setIsProses(0);
@@ -133,13 +129,13 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        
+
+        $barang = $em->getRepository(Barang::class)->findAll();
         
         if($request->getMethod() == 'POST') {
             $data = new Pembayaran();
             $data->setUser($user);
-            $data->setNamaPembayar($request->get('nama_pembayar'));
-            $data->setEmailPembayar($request->get('email_pembayar'));
+            $data->setBarang($em->getRepository(Barang::class)->find($request->get('barang')));
 
             if (!is_dir($this->getParameter('pembayaran_directory')['resource'])) {
                 @mkdir($this->getParameter('pembayaran_directory')['resource'], 0777, true);
@@ -171,7 +167,9 @@ class UserController extends Controller
 
                 return $this->redirect($this->generateUrl('app_user_pembayaran'));
         }
-        return $this->render('AppBundle:backend:create-pembayaran.html.twig');
+        return $this->render('AppBundle:backend:create-pembayaran.html.twig',[
+            'barang' => $barang
+        ]);
 
     }
 
@@ -186,6 +184,79 @@ class UserController extends Controller
         return $this->render('AppBundle:backend:user-pembayaran.html.twig',['data'=>$data]);
 
 
+    }
+
+    public function listPemesananAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $data = $em->getRepository(Pemesanan::class)->findBy(['user'=>$user->getId()]);
+
+        return $this->render('AppBundle:backend:user-pemesanan.html.twig',['data'=>$data]);
+    }
+
+    public function deletePemesananAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $data = $em->getRepository(Pemesanan::class)->find($user->getId());
+
+        $em->remove($data);
+
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('app_user_pemesanan'));
+    }
+
+    public function updatePemesananAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $data = $em->getRepository(Pemesanan::class)->findOneBy(['user'=>$user->getId()]);
+
+        $barang = $em->getRepository(Barang::class)->findAll();
+
+        if($request->getMethod() == 'POST') {
+            if($data instanceof Pemesanan) {
+                $data->setUser($user);
+                $data->setBarang($em->getRepository(Barang::class)->find($request->get('barang')));
+                $data->setTotalPemesan($request->get('total_pemesan'));
+                $data->setTotalHarga($request->get('total_harga'));
+                $data->setIsProses(0);
+            }
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('app_user_pemesanan'));
+
+
+        }
+        return $this->render('AppBundle:backend:user-update-pemesanan.html.twig',[
+            'data'=>$data,
+            'barang' => $barang
+        ]);
+
+    }
+
+    public function deletePembayaranAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $data = $em->getRepository(Pembayaran::class)->findOneBy(['user'=>$user->getId()]);
+
+        $em->remove($data);
+
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('app_user_pembayaran'));
     }
 
 }
