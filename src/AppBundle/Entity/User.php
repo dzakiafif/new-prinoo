@@ -53,6 +53,11 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      */
+    private $profilePhoto;
+
+    /**
+     * @var string
+     */
     private $roles;
 
 
@@ -225,6 +230,25 @@ class User implements UserInterface, \Serializable
     public function getNoTelp()
     {
         return $this->noTelp;
+    }
+
+    /**
+     * @param $profilePhoto
+     * @return $this
+     */
+    public function setProfilePhoto($profilePhoto)
+    {
+        $this->profilePhoto = $profilePhoto;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfilePhoto()
+    {
+        return $this->profilePhoto;
     }
 
     /**

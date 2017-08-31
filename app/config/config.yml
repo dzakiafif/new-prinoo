@@ -11,6 +11,9 @@ parameters:
     pembayaran_directory:
       resource: './uploads/images/pembayaran'
 
+    profile_directory:
+      resource: './uploads/images/profile'
+
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }

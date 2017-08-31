@@ -83,13 +83,9 @@ class UserController extends Controller
 
         if($request->getMethod() == 'POST') {
             $user = new User();
-            $user->setFirstname($request->get('firstname'));
-            $user->setLastname($request->get('lastname'));
             $user->setUsername($request->get('username'));
             $user->setEmail($request->get('email'));
             $user->setPassword($request->get('password'));
-            $user->setNoTelp($request->get('no_telp'));
-            $user->setAddress($request->get('address'));
             $user->setRoles(serialize(['ROLE_USER']));
 
             $em->persist($user);

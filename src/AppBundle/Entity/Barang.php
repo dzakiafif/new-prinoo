@@ -28,6 +28,11 @@ class Barang
      */
     private $jenisBarang;
 
+    /**
+     * @var string
+     */
+    private $description;
+
 
     /**
      * Get id
@@ -102,5 +107,24 @@ class Barang
     public function getJenisBarang()
     {
         return $this->jenisBarang;
+    }
+
+    /**
+     * @param $description
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

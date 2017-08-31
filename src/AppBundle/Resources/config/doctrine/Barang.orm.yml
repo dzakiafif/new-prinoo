@@ -17,6 +17,9 @@ AppBundle\Entity\Barang:
             type: string
             length: 255
             column: harga_barang
+        description:
+            type: string
+            length: 255
         jenisBarang:
             type: integer
             column: jenis_barang

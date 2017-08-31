@@ -9,11 +9,13 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\ImageResize;
 use AppBundle\Entity\Pembayaran;
 use AppBundle\Entity\Barang;
 use AppBundle\Entity\Pemesanan;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
@@ -45,11 +47,36 @@ class AdminController extends Controller
             if($data instanceof User) {
                 $data->setFirstname($request->get('firstname'));
                 $data->setLastname($request->get('lastname'));
-//                $data->setUsername($request->get('username'));
                 $data->setEmail($request->get('email'));
-//                $data->setPassword($request->get('password'));
                 $data->setNoTelp($request->get('no_telp'));
             }
+
+            if (!(is_dir($this->getParameter('profile_directory')['resource']))) {
+                @mkdir($this->getParameter('profile_directory')['resource'], 0777, true);
+            }
+
+            if(!empty($request->files->get('profile_photo'))) {
+                $file = $request->files->get('profile_photo');
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                $exAllowed = array('jpg', 'png', 'jpeg');
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                if (in_array($ext, $exAllowed)) {
+                    if ($file instanceof UploadedFile) {
+                        if (!($file->getClientSize() > (1024 * 1024 * 1))) {
+                            ImageResize::createFromFile(
+                                $request->files->get('profile_photo')->getPathName()
+                            )->saveTo($this->getParameter('profile_directory')['resource'] . '/' . $filename, 20, true);
+                            $data->setProfilePhoto($filename);
+                        } else {
+                            return 'gambar tidak boleh lebih dari 1 MB';
+                        }
+                    }
+                } else {
+                    return 'cek kembali extension gambar anda';
+                }
+            }
+
+//            return var_dump($data);
 
             $em->persist($data);
             $em->flush();
@@ -93,6 +120,7 @@ class AdminController extends Controller
             $barang = new Barang();
             $barang->setNamaBarang($request->get('nama_barang'));
             $barang->setHargaBarang($request->get('harga_barang'));
+            $barang->setDescription($request->get('description'));
             $barang->setJenisBarang($request->get('jenis_barang'));
 
             $em->persist($barang);
@@ -135,6 +163,7 @@ class AdminController extends Controller
             if ($data instanceof Barang) {
                 $data->setNamaBarang($request->get('nama_barang'));
                 $data->setHargaBarang($request->get('harga_barang'));
+                $data->setDescription($request->get('description'));
                 $data->setJenisBarang($request->get('jenis_barang'));
             }
             $em->persist($data);

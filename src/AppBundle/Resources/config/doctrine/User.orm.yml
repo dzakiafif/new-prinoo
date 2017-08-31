@@ -34,6 +34,11 @@ AppBundle\Entity\User:
             type: string
             length: 255
             nullable: true
+        profilePhoto:
+            type: string
+            length: 255
+            column: profile_photo
+            nullable: true
         noTelp:
             type: string
             length: 255

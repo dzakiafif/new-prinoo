@@ -19,9 +19,15 @@
                                 <input type="text" name="harga_barang" id="" class="form-control" value="{% if data.hargaBarang is defined and not null %}{{ data.hargaBarang }}{% endif %}">
                             </div>
                             <div class="form-group">
-                                <select name="jenis_barang" id="" class="form-control">
+                                <label for="description">Deskripsi Barang</label>
+                                <input type="text" name="description" id="description" class="form-control" value="{% if data.description is not null %}{{ data.description }}{% else %}-{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label for="jenis_barang">Jenis Barang</label>
+                                <select name="jenis_barang" id="jenis_barang" class="form-control">
                                     <option value="">-- Pilih Jenis Barang --</option>
                                     <option value="1" {% if data.jenisBarang is defined and not null %}{% if data.jenisBarang == 1 %}selected{% endif %}{% endif %}>Paket</option>
+                                    <option value="2" {% if data.jenisBarang is not null %}{% if data.jenisBarang == 2 %}selected{% endif %}{% endif %}></option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">SUBMIT</button>

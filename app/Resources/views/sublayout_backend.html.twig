@@ -41,11 +41,22 @@
                             {#<input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>#}
                     {#</li>#}
                     <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ asset('assets_backend') }}/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{% if app.user.firstName and app.user.lastName is not null %}{{ app.user.firstName }}&nbsp;{{ app.user.lastName }}{% endif %}</b><span class="caret"></span> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
+                            {% if app.user.profilePhoto is not null %}
+                            <img src="{{ asset('uploads') }}/images/profile/{{ app.user.profilePhoto }}" width="36" class="img-circle"><b class="hidden-xs">{% if app.user.firstName and app.user.lastName is not null %}{{ app.user.firstName }}&nbsp;{{ app.user.lastName }}{% endif %}</b><span class="caret"></span></a>
+                            {% else %}
+                            <img src="{{ asset('assets_backend') }}/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{% if app.user.firstName and app.user.lastName is not null %}{{ app.user.firstName }}&nbsp;{{ app.user.lastName }}{% endif %}</b><span class="caret"></span> </a>
+                            {% endif %}
                         <ul class="dropdown-menu dropdown-user animated flipInY">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img src="{{ asset('assets_backend') }}/plugins/images/users/varun.jpg" alt="user" /></div>
+                                    <div class="u-img">
+                                        {% if app.user.profilePhoto is not null %}
+                                            <img class="img-circle" src="{{ asset('uploads') }}/images/profile/{{ app.user.profilePhoto }}" width="36" alt="">
+                                        {% else %}
+                                            <img src="{{ asset('assets_backend') }}/plugins/images/users/varun.jpg" alt="user" />
+                                        {% endif %}
+                                    </div>
                                     <div class="u-text">
                                         <h4>{% if app.user.username is not null %}{{ app.user.username }}{% endif %}</h4>
                                         <p class="text-muted">{% if app.user.email is not null %}{{ app.user.email }}{% endif %}</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
@@ -79,7 +90,13 @@
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3> </div>
                 <div class="user-profile">
                     <div class="dropdown user-pro-body">
-                        <div><img src="{{ asset('assets_backend') }}/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
+                        <div>
+                            {% if app.user.profilePhoto is not null %}
+                                <img src="{{ asset('uploads') }}/images/profile/{{ app.user.profilePhoto }}" alt="user-img" class="img-circle">
+                            {% else %}
+                                <img src="{{ asset('assets_backend') }}/plugins/images/users/varun.jpg" alt="user-img" class="img-circle">
+                            {% endif %}    
+                        </div>
                         <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if app.user.firstName and app.user.lastName is not null %}{{ app.user.firstName }}&nbsp;{{ app.user.lastName }}{% endif %}<span class="caret"></span></a>
                         <ul class="dropdown-menu animated flipInY">
                             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
