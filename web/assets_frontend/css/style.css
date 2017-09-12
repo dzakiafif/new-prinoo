@@ -89,6 +89,7 @@ html{
 }
 .wrapper {
 	padding:0 30px;
+	background-color: #00b3ee;
 }
 .top{
   background: #fff;
@@ -465,6 +466,7 @@ header.transparent nav.navbar.bootsnav{
     width: 100%;
     padding: 0 30px;
     left: 0;
+	background-color: lightgrey;
 }
 .navbar-fixed.no-background{ top:30px;}
 nav.navbar.bootsnav.navbar.sticky, nav.navbar.bootsnav, nav.navbar.bootsnav.navbar-fixed.no-background .navbar-collapse{ 
