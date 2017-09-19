@@ -64,7 +64,11 @@
                                     {% if app.user.username is not defined  %}
                                         <a class="btn btn-colored btn-flat bg-theme-color-2 text-white font-14 bs-modal-ajax-load mt-0 p-25 pr-15 pl-15" href="{{ path('app_login') }}">Login</a>
                                     {% else %}
-                                        <a href="{{ path('app_user_home') }}" class="btn btn-colored btn-flat bg-theme-color-2 text-white font-14 bs-modal-ajax-load mt-0 p-25 pr-15 pl-15">Dashboard</a>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a href="{{ path('app_admin_index') }}" class="btn btn-colored btn-flat bg-theme-color-2 text-white font-14 bs-modal-ajax-load mt-0 p-25 pr-15 pl-15">Dashboard</a>
+                                        {% else %}
+                                            <a href="{{ path('app_user_home') }}" class="btn btn-colored btn-flat bg-theme-color-2 text-white font-14 bs-modal-ajax-load mt-0 p-25 pr-15 pl-15">Dashboard</a>
+                                        {% endif %}
                                     {% endif %}
                                     <!-- Modal: Book Now End -->
                                 </li>
