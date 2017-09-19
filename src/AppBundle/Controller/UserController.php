@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use AppBundle\Entity\ImageResize;
 use AppBundle\Entity\Barang;
@@ -24,31 +25,19 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $qb = $em->createQueryBuilder();
 
-        $barang = $em->getRepository(Barang::class)->findAll();
+        $qb->select('u')->from(Barang::class,'u')->where('u.isTop = 1');
 
+        $barang = $qb->getQuery()->getResult();
 
-        if($request->getMethod() == 'POST') {
+        $ab = $em->createQueryBuilder();
 
-            if($this->isGranted('ROLE_USER')) {
-                $pemesanan = new Pemesanan();
-                $pemesanan->setUser($user);
-                $pemesanan->setBarang($em->getRepository(Barang::class)->find($request->get('barang')));
-                $pemesanan->setTotalPemesan($request->get('total_pemesan'));
-                $pemesanan->setTotalHarga($request->get('total_harga'));
-                $pemesanan->setIsProses(0);
-                $em->persist($pemesanan);
-                $em->flush();
+        $ab->select('p')->from(Barang::class,'p')->where('p.isNew = 1');
 
-                return $this->redirect($this->generateUrl('app_success'));
-            }else {
-                return $this->redirect($this->generateUrl('app_error'));
-            }
+        $barangNew = $ab->getQuery()->getResult();
 
-        }
-
-        return $this->render('AppBundle:frontend:home.html.twig',['barang'=>$barang]);
+        return $this->render('AppBundle:frontend:home.html.twig',['barang'=>$barang,'barangNew' => $barangNew]);
     }
 
     public function notificationAction()
@@ -75,8 +64,69 @@ class UserController extends Controller
     {
         return $this->render('AppBundle:frontend:product.html.twig');
     }
-    
 
+    public function galleryAction($page = 1,$limit = 5)
+    {
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $qb = $em->createQueryBuilder();
+
+        $qb->select('u')->from(Barang::class,'u')->orderBy('u.namaBarang','ASC');
+
+        $barang = $qb->getQuery();
+
+        $paginator = new Paginator($barang);
+
+        $paginator->getQuery()->setFirstResult($limit * ($page - 1))->setMaxResults($limit);
+
+        $thisPage = $page;
+
+        $maxPage = ceil($paginator->count() / $limit);
+
+        return $this->render('AppBundle:frontend:gallery.html.twig',[
+            'paginator' => $paginator,
+            'maxPages' => $maxPage,
+            'thisPage' => $thisPage
+        ]);
+    }
+
+    public function barangDetailAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $barang = $em->getRepository(Barang::class)->find($id);
+
+        return $this->render('AppBundle:frontend:barang-detail.html.twig',[
+           'barang' => $barang
+        ]);
+    }
+
+    public function getAllGallery($currentPage = 1)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $qb = $em->createQueryBuilder();
+
+        $qb->select('u')->from(Barang::class,'u')->orderBy('u.namaBarang','DESC');
+
+        $barang = $qb->getQuery();
+
+        $paginator = $this->paginate($barang, $currentPage);
+
+        return $paginator;
+    }
+
+    public function paginate($dql, $page = 1, $limit = 5)
+    {
+        $paginator = new Paginator($dql);
+
+        $paginator->getQuery()->setFirstResult($limit * ($page - 1))->setMaxResults($limit);
+
+        return $paginator;
+    }
+    
     public function registerAction(Request $request)
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -258,6 +308,49 @@ class UserController extends Controller
         $em->flush();
 
         return $this->redirect($this->generateUrl('app_user_pembayaran'));
+    }
+
+    public function cartAction(Request $request)
+    {
+        $session = $request->getSession();
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        if($request->getMethod() == 'POST') {
+            $data = new Pemesanan();
+            $data->setUser($user);
+            $data->setBarang($em->getRepository(Barang::class)->find($session->get('test')['value']));
+            $data->setTotalPemesan($request->get('total_pemesan'));
+            $data->setTotalHarga($request->get('total_harga'));
+            $data->setIsProses(0);
+
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('app_success'));
+        }
+
+        return $this->render('AppBundle:frontend:cart.html.twig');
+
+    }
+
+    public function addCartAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $session = $this->getRequest()->getSession();
+
+        $barang = $em->getRepository(Barang::class)->find($id);
+
+        $session->set('test',['value' => $barang->getId()]);
+
+        $session->set('nama-barang',['value'=>$barang->getNamaBarang()]);
+
+        $session->set('harga-barang',['value'=>$barang->getHargaBarang()]);
+
+        return $this->redirect($this->generateUrl('app_cart'));
     }
 
 }

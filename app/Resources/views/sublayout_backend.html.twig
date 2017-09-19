@@ -50,16 +50,9 @@
                         <ul class="dropdown-menu dropdown-user animated flipInY">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img">
-                                        {% if app.user.profilePhoto is not null %}
-                                            <img class="img-circle" src="{{ asset('uploads') }}/images/profile/{{ app.user.profilePhoto }}" width="36" alt="">
-                                        {% else %}
-                                            <img src="{{ asset('assets_backend') }}/plugins/images/users/varun.jpg" alt="user" />
-                                        {% endif %}
-                                    </div>
                                     <div class="u-text">
                                         <h4>{% if app.user.username is not null %}{{ app.user.username }}{% endif %}</h4>
-                                        <p class="text-muted">{% if app.user.email is not null %}{{ app.user.email }}{% endif %}</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                        <p class="text-muted">{% if app.user.email is not null %}{{ app.user.email }}{% endif %}</p></div>
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>

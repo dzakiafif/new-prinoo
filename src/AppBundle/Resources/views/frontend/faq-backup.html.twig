@@ -1,0 +1,155 @@
+{% extends 'sublayout_frontend.html.twig' %}
+
+{% block subLayout %}
+    <!-- LOADER -->
+    <div class="loader">
+        <div class="tt-loading-center">
+            <div class="tt-loading-center-absolute">
+                <div class="tt-object object_four"></div>
+                <div class="tt-object object_three"></div>
+                <div class="tt-object object_two"></div>
+                <div class="tt-object object_one"></div>
+            </div>
+        </div>
+        <div id="loading-text">LOADING</div>
+    </div>
+    <!--LOADER Ends-->
+
+
+    <!--HEADER-->
+    <header class="transparent">
+        <div class="container-fluid">
+            <nav class="navbar navbar-default navbar-sticky bootsnav">
+                <div id="menu_bars" class="right">
+                    <span class="t1"></span>
+                    <span class="t2"></span>
+                    <span class="t3"></span>
+                </div>
+                <a class="navbar-brand" href="{{ path('app_index') }}"><img src="{{ asset('assets_frontend') }}/images/prinoo-01.png" class="logo" alt=""></a>
+                <div class="sidebar_menu">
+                    <nav class="pushmenu pushmenu-right">
+                        <a class="push-logo" href="index2.html"><img src="{{ asset('assets_frontend') }}/images/prinoo-01.png" alt="logo"></a>
+                        <ul class="push_nav centered">
+                            {% if app.user.username is not defined %}
+                                <li class="last"><a href="{{ path('app_login') }}">Login</a></li>
+                            {% else %}
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="last"><a href="{{ path('app_admin_index') }}">Dashboard</a></li>
+                                {% else %}
+                                    <li class="last"><a href="{{ path('app_user_home') }}">Dashboard</a></li>
+                                {% endif %}
+                            {% endif %}
+                            <li class="last"><a href="{{ path('app_faq') }}">FAQ</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--HEADER ends -->
+
+
+    <!-- About Three Box -->
+    <section id="box" class=" padding_top padding_bottom_half bg_two">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="box_bg heading_space wow fadeIn" data-wow-delay="500ms">
+                        <span class="iconic"><img src="{{ asset('assets_frontend') }}/images/icon1.png" alt="icon"></span>
+                        <span class="digit bottom25">1</span>
+                        <h3 class="text-capitalize bottom10">Bagaimana Cara Memesan?</h3>
+                        <p class="bottom30">Anda Harus daftar terlebih dahulu kemudian scroll ke bawah dan pilih paket yang akan anda mau pesan</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box_bg heading_space wow fadeIn" data-wow-delay="600ms">
+                        <span class="iconic"><img src="{{ asset('assets_frontend') }}/images/icon2.png" alt="icon"></span>
+                        <span class="digit bottom25">2</span>
+                        <h3 class="text-capitalize bottom10">Metode Pembayaran apa saja yang terdapat di prinoo?</h3>
+                        <p class="bottom30">Untuk sementara, anda hanya bisa transfer via bri </p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box_bg heading_space wow fadeIn" data-wow-delay="800ms">
+                        <span class="iconic"><img src="{{ asset('assets_frontend') }}/images/icon3.png" alt="icon"></span>
+                        <span class="digit bottom25">3</span>
+                        <h3 class="text-capitalize bottom10">Apakah Saya dapat membatalkan order?</h3>
+                        <p class="bottom30">setelah pembayaran kami terima, order anda akan diproses. namun sebelum diproses anda masih dapat melakukan revisi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="box_bg heading_space wow fadeIn" data-wow-delay="500ms">
+                        <span class="iconic"><img src="{{ asset('assets_frontend') }}/images/icon1.png" alt="icon"></span>
+                        <span class="digit bottom25">4</span>
+                        <h3 class="text-capitalize bottom10">Kapan Pesanan saya tiba?</h3>
+                        <p class="bottom30">Diperlukan waktu 7-10 hari kerja (tidak termasuk hari Sabtu, Minggu dan hari libur) untuk memproses pesananmu dan mengirimnya.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box_bg heading_space wow fadeIn" data-wow-delay="600ms">
+                        <span class="iconic"><img src="{{ asset('assets_frontend') }}/images/icon2.png" alt="icon"></span>
+                        <span class="digit bottom25">5</span>
+                        <h3 class="text-capitalize bottom10">Apa yang harus saya lakukan apabila pesanan saya tiba dalam kondisi rusak/cacat?</h3>
+                        <p class="bottom30">Jangan khawatir! Apabila produk yang diterima dalam kondisi rusak atau cacat, kamu dapat mengembalikannya dalam waktu maksimal 7 hari setelah menerima produk. </p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box_bg heading_space wow fadeIn" data-wow-delay="800ms">
+                        <span class="iconic"><img src="{{ asset('assets_frontend') }}/images/icon3.png" alt="icon"></span>
+                        <span class="digit bottom25">6</span>
+                        <h3 class="text-capitalize bottom10">Bagaimana cara mengajukan retur barang?</h3>
+                        <p class="bottom30">Kami memberikan 100% jaminan kepuasan. Apabila produk yang diterima dalam kondisi rusak atau cacat, kamu dapat mengembalikannya dalam waktu maksimal 7 hari setelah menerima produk.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+    <!-- About Three Box Ends-->
+
+
+    <!--FOOTER-->
+    <footer>
+        <div class="container foot_inner padding_top">
+            <div class="row">
+                <div class="col-sm-4 foot_panel bottom25" style="margin-top: 30px;">
+                    <img src="{{ asset('assets_frontend') }}/images/prinoo-01.png" alt="logo" class="bottom30">
+                    {#<p>Start Our Studio Duis aute to irure dolor in reprehenderit in cillum nulla excepteur sint.</p>#}
+                </div>
+                <div class="col-sm-8 foot_panel">
+                    <h3 class="bottom30">Get in Touch</h3>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="reach bottom25">
+                                <i class="icon-location"></i>
+                                <p>Jl Perumahan Bukit Citra Tidar Sukun <br>Malang</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 bottom25">
+                            <div class="reach bottom10">
+                                <i class="icon-icons202"></i>
+                                <p>+6282245655117</p>
+                            </div>
+                            <div class="reach">
+                                <i class="icon-mail"></i>
+                                <p><a href="#.">prinoo.id@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Copyrights © 2017 STT MALANG</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}

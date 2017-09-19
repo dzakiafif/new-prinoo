@@ -122,6 +122,33 @@ class AdminController extends Controller
             $barang->setHargaBarang($request->get('harga_barang'));
             $barang->setDescription($request->get('description'));
             $barang->setJenisBarang($request->get('jenis_barang'));
+            $barang->setIsTop($request->get('top'));
+            $barang->setIsNew($request->get('new'));
+
+            if (!(is_dir($this->getParameter('barang_directory')['resource']))) {
+                @mkdir($this->getParameter('barang_directory')['resource'], 0777, true);
+            }
+
+            if(!empty($request->files->get('profile_barang'))) {
+                $file = $request->files->get('profile_barang');
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                $exAllowed = array('jpg', 'png', 'jpeg');
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                if (in_array($ext, $exAllowed)) {
+                    if ($file instanceof UploadedFile) {
+                        if (!($file->getClientSize() > (1024 * 1024 * 1))) {
+                            ImageResize::createFromFile(
+                                $request->files->get('profile_barang')->getPathName()
+                            )->saveTo($this->getParameter('barang_directory')['resource'] . '/' . $filename, 20, true);
+                            $barang->setProfileBarang($filename);
+                        } else {
+                            return 'gambar tidak boleh lebih dari 1 MB';
+                        }
+                    }
+                } else {
+                    return 'cek kembali extension gambar anda';
+                }
+            }
 
             $em->persist($barang);
             $em->flush();
@@ -165,7 +192,35 @@ class AdminController extends Controller
                 $data->setHargaBarang($request->get('harga_barang'));
                 $data->setDescription($request->get('description'));
                 $data->setJenisBarang($request->get('jenis_barang'));
+                $data->setIsTop($request->get('top'));
+                $data->setIsNew($request->get('new'));
             }
+
+            if (!(is_dir($this->getParameter('barang_directory')['resource']))) {
+                @mkdir($this->getParameter('barang_directory')['resource'], 0777, true);
+            }
+
+            if(!empty($request->files->get('profile_barang'))) {
+                $file = $request->files->get('profile_barang');
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                $exAllowed = array('jpg', 'png', 'jpeg');
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                if (in_array($ext, $exAllowed)) {
+                    if ($file instanceof UploadedFile) {
+                        if (!($file->getClientSize() > (1024 * 1024 * 1))) {
+                            ImageResize::createFromFile(
+                                $request->files->get('profile_barang')->getPathName()
+                            )->saveTo($this->getParameter('barang_directory')['resource'] . '/' . $filename, 20, true);
+                            $data->setProfileBarang($filename);
+                        } else {
+                            return 'gambar tidak boleh lebih dari 1 MB';
+                        }
+                    }
+                } else {
+                    return 'cek kembali extension gambar anda';
+                }
+            }
+
             $em->persist($data);
             $em->flush();
 

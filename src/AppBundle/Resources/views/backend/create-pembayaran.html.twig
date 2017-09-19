@@ -20,7 +20,13 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="file" name="berkas" id="" class="form-control">
+                                <div class="img-avatar">
+                                    <label for="img-image" class="label-img">
+                                        <img src="{{ asset('assets_backend') }}/images/cloud.png" height="250" class="img-responsive" align="center">
+                                        <input type="file" id="img-image" accept="image/*" class="hide" name="berkas" onchange="readURL(this);">
+                                        <br><small>(rekomendasi file maximum 1MB & extension: .png,.jpg,.svg,.jpeg)</small>
+                                    </label>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">SUBMIT</button>
                         </form>

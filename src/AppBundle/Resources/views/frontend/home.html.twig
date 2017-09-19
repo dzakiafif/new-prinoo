@@ -1,303 +1,338 @@
-{% extends 'layout_frontend.html.twig' %}
+{% extends 'sublayout_frontend.html.twig' %}
 
-{% block subLayout %}
+{% block content %}
+    <!-- Section: home -->
+    <section id="home">
+        <div class="container-fluid p-0">
 
+            <!-- Slider Revolution Start -->
+            <div class="rev_slider_wrapper">
+                <div class="rev_slider" data-version="5.0">
+                    <ul>
 
+                        <!-- SLIDE 1 -->
+                        <li data-index="rs-1" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="http://placehold.it/1920x1280" data-rotate="0" data-saveperformance="off" data-title="Slide 1" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="{{ asset('assets_frontend') }}/images/gambar6.png"  alt=""  data-bgposition="center 10%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
+                            <!-- LAYERS -->
 
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway"
+                                 id="rs-1-layer-1"
 
-<!-- LOADER -->
-<div class="loader">
-    <div class="tt-loading-center">
-        <div class="tt-loading-center-absolute">
-            <div class="tt-object object_four"></div>
-            <div class="tt-object object_three"></div>
-            <div class="tt-object object_two"></div>
-            <div class="tt-object object_one"></div>
-        </div>
-    </div>
-    <div id="loading-text">LOADING</div>
-</div>
-<!--LOADER Ends-->
+                                 data-x="['left']"
+                                 data-hoffset="['30']"
+                                 data-y="['middle']"
+                                 data-voffset="['-90']"
+                                 data-fontsize="['48']"
+                                 data-lineheight="['110']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-transform_idle="o:1;s:500"
+                                 data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                                 data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                                 data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                 data-start="1000"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on"
+                                 style="z-index: 7; white-space: nowrap; font-weight:700;"><span class="text-theme-color-2">
+                            </div>
 
-<!--HEADER-->
-<header class="transparent">
-    <div class="container-fluid">
-        <nav class="navbar navbar-default navbar-sticky bootsnav">
-            <div id="menu_bars" class="right">
-                <span class="t1"></span>
-                <span class="t2"></span>
-                <span class="t3"></span>
-            </div>
-            <a class="navbar-brand" href="{{ path('app_index') }}"><img src="{{ asset('assets_frontend') }}/images/prinoo-01.png" class="logo" alt=""></a>
-            <div class="sidebar_menu">
-                <nav class="pushmenu pushmenu-right">
-                    <a class="push-logo" href="{{ path('app_index') }}"><img src="{{ asset('assets_frontend') }}/images/prinoo-01.png" alt="logo"></a>
-                    <ul class="push_nav centered">
-                        {% if app.user.username is not defined %}
-                            <li class="last"><a href="{{ path('app_login') }}">Login</a></li>
-                        {% else %}
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li class="last"><a href="{{ path('app_admin_index') }}">Dashboard</a></li>
-                            {% else %}
-                                <li class="last"><a href="{{ path('app_user_home') }}">Dashboard</a></li>
-                            {% endif %}
-                        {% endif %}
-                        <li class="last"><a href="{{ path('app_faq') }}">FAQ</a></li>
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption tp-resizeme text-uppercase text-white"
+                                 id="rs-1-layer-2"
+
+                                 data-x="['left']"
+                                 data-hoffset="['35']"
+                                 data-y="['middle']"
+                                 data-voffset="['-30']"
+                                 data-fontsize="['64']"
+                                 data-lineheight="['94']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-transform_idle="o:1;s:500"
+                                 data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                                 data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                                 data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                 data-start="1000"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on"
+                                 style="z-index: 7; white-space: nowrap; font-weight:600;">
+                            </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption tp-resizeme text-white"
+                                 id="rs-1-layer-3"
+
+                                 data-x="['left']"
+                                 data-hoffset="['35']"
+                                 data-y="['middle']"
+                                 data-voffset="['35']"
+                                 data-fontsize="['16']"
+                                 data-lineheight="['28']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-transform_idle="o:1;s:500"
+                                 data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                                 data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                                 data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                 data-start="1400"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on"
+                                 style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;">
+                            </div>
+
+                            <!-- LAYER NR. 4 -->
+                            <div class="tp-caption tp-resizeme"
+                                 id="rs-1-layer-4"
+
+                                 data-x="['left']"
+                                 data-hoffset="['35']"
+                                 data-y="['middle']"
+                                 data-voffset="['100']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                 data-start="1400"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on"
+                                 style="z-index: 5; white-space: nowrap; letter-spacing:1px;">
+                            </div>
+                        </li>
+
+                        </li>
+
                     </ul>
-                    <div class="clearfix"></div>
-                </nav>
-            </div>
-        </nav>
-    </div>
-</header>
-<!--HEADER ends -->
-
-<!-- ABOUT -->
-<section id="about" class="padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-7 wow fadeInLeft" data-wow-delay="500ms">
-                <h2 class="heading_space">Apa sih Kami?</h2>
-                <p class="bottom35">Prinoo adalah platform pemesanan event kits online yang dibuat untuk memudahkan para Event Organizer / Creator Event untuk memesan segala kebutuhan cetak untuk Event.</p>
-                {#<p class="bottom35">Consequat Duis aute to irure dolor in reprehenderit in voluptate velit ease cillum dolore eu fugiat nulla pari excepteur sint. occaecat cupidatat non proident.</p>#}
-                {#<a class="btn_default btn_border bottom15" href="#.">ABOUT US</a>#}
-            </div>
-            <div class="col-sm-5 wow fadeInRight" data-wow-delay="800ms">
-                <div class="image"><img src="{{ asset('assets_frontend') }}/images/about2.jpg" class="img-responsive" alt="About"></div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ABOUT Ends -->
-
-
-
-<!--Gallery-->
-<section id="portfolio_top" class="padding_bottom z_top">
-    <div class="container">
-        <div id="portfolio-top" class="cbp cbp-l-grid-work">
-            <div class="cbp-item portfolio_border">
-                <a href="{{ asset('assets_frontend') }}/images/home2-portfolio3.jpg" class="cbp-lightbox">
-                    <img src="{{ asset('assets_frontend') }}/images/home2-portfolio1.jpg" alt="">
-                    {#<div class="overlay">#}
-                        {#<div class="overlay_bottom">#}
-                            {#<h4 class="text-uppercase">creative</h4>#}
-                            {#<p>35 WP Annyversary</p>#}
-                        {#</div>#}
-                    {#</div>#}
-                </a>
-            </div>
-            <div class="cbp-item no_shadow">
-                <div class="padding_top text_wrap bg_transparent">
-                    <h2 class="bottom10 text-capitalize">Gallery Kami</h2>
-                    {#<p></p>#}
                 </div>
+                <!-- end .rev_slider -->
             </div>
-            <div class="cbp-item portfolio_border">
-                <a href="{{ asset('assets_frontend') }}/images/home2-portfolio3.jpg" class="cbp-lightbox">
-                    <img src="{{ asset('assets_frontend') }}/images/home2-portfolio3.jpg" alt="">
-                    {#<div class="overlay">#}
-                        {#<div class="overlay_bottom">#}
-                            {#<h4 class="text-uppercase">creative</h4>#}
-                            {#<p>35 WP Annyversary</p>#}
-                        {#</div>#}
-                    {#</div>#}
-                </a>
-            </div>
-            <div class="cbp-item portfolio_border">
-                <a href="{{ asset('assets_frontend') }}/images/home2-portfolio2.jpg" class="cbp-lightbox">
-                    <img src="{{ asset('assets_frontend') }}/images/home2-portfolio2.jpg" alt="">
-                    {#<div class="overlay">#}
-                        {#<div class="overlay_bottom">#}
-                            {#<h4 class="text-uppercase">creative</h4>#}
-                            {#<p>35 WP Annyversary</p>#}
-                        {#</div>#}
-                    {#</div>#}
-                </a>
-            </div>
-            <div class="cbp-item portfolio_border">
-                <a href="{{ asset('assets_frontend') }}/images/home2-portfolio4.jpg" class="cbp-lightbox">
-                    <img src="{{ asset('assets_frontend') }}/images/home2-portfolio4.jpg" alt="">
-                    {#<div class="overlay">#}
-                        {#<div class="overlay_bottom">#}
-                            {#<h4 class="text-uppercase">creative</h4>#}
-                            {#<p>35 WP Annyversary</p>#}
-                        {#</div>#}
-                    {#</div>#}
-                </a>
-            </div>
+            <!-- end .rev_slider_wrapper -->
+            <script>
+                $(document).ready(function(e) {
+                    $(".rev_slider").revolution({
+                        sliderType:"standard",
+                        sliderLayout: "auto",
+                        dottedOverlay: "none",
+                        delay: 5000,
+                        navigation: {
+                            keyboardNavigation: "off",
+                            keyboard_direction: "horizontal",
+                            mouseScrollNavigation: "off",
+                            onHoverStop: "off",
+                            touch: {
+                                touchenabled: "on",
+                                swipe_threshold: 75,
+                                swipe_min_touches: 1,
+                                swipe_direction: "horizontal",
+                                drag_block_vertical: false
+                            },
+                            arrows: {
+                                style:"zeus",
+                                enable:true,
+                                hide_onmobile:true,
+                                hide_under:600,
+                                hide_onleave:true,
+                                hide_delay:200,
+                                hide_delay_mobile:1200,
+                                tmp:'<div class="tp-title-wrap">    <div class="tp-arr-imgholder"></div> </div>',
+                                left: {
+                                    h_align:"left",
+                                    v_align:"center",
+                                    h_offset:30,
+                                    v_offset:0
+                                },
+                                right: {
+                                    h_align:"right",
+                                    v_align:"center",
+                                    h_offset:30,
+                                    v_offset:0
+                                }
+                            },
+                            bullets: {
+                                enable:true,
+                                hide_onmobile:true,
+                                hide_under:600,
+                                style:"metis",
+                                hide_onleave:true,
+                                hide_delay:200,
+                                hide_delay_mobile:1200,
+                                direction:"horizontal",
+                                h_align:"center",
+                                v_align:"bottom",
+                                h_offset:0,
+                                v_offset:30,
+                                space:5,
+                                tmp:'<span class="tp-bullet-img-wrap">  <span class="tp-bullet-image"></span></span><span class="tp-bullet-title"></span>'
+                            }
+                        },
+                        responsiveLevels: [1240, 1024, 778],
+                        visibilityLevels: [1240, 1024, 778],
+                        gridwidth: [1170, 1024, 778, 480],
+                        gridheight: [650, 768, 960, 720],
+                        lazyType: "none",
+                        parallax: {
+                            origo: "slidercenter",
+                            speed: 1000,
+                            levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 100, 55],
+                            type: "scroll"
+                        },
+                        shadow: 0,
+                        spinner: "off",
+                        stopLoop: "on",
+                        stopAfterLoops: 0,
+                        stopAtSlide: -1,
+                        shuffle: "off",
+                        autoHeight: "off",
+                        fullScreenAutoWidth: "off",
+                        fullScreenAlignForce: "off",
+                        fullScreenOffsetContainer: "",
+                        fullScreenOffset: "0",
+                        hideThumbsOnMobile: "off",
+                        hideSliderAtLimit: 0,
+                        hideCaptionAtLimit: 0,
+                        hideAllCaptionAtLilmit: 0,
+                        debugMode: false,
+                        fallbacks: {
+                            simplifyAll: "off",
+                            nextSlideOnWindowFocus: "off",
+                            disableFocusListener: false,
+                        }
+                    });
+                });
+            </script>
+            <!-- Slider Revolution Ends -->
+
         </div>
-    </div>
-</section>
-<!--Gallery ends -->
+    </section>
 
-<!-- PRICINGS -->
-<section id="pricing" class="padding bg_one">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center wow fadeInDown">
-                <h2 class="bottom10 text-capitalize">Paket Kami</h2>
-                {#<p class="heading_space">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>#}
-            </div>
-            {% for item in barang %}
-                <div class="col-sm-4">
-                    <div class="pricing_table text-center top40 wow fadeInUp">
-                        <h3 class="price_title">{% if item.namaBarang is not null %}{{ item.namaBarang }}{% endif %}</h3>
-                        <div class="price top30 bottom20">
-                            <p><span class="dollor">{% if item.hargaBarang is not null %}{{ item.hargaBarang }}{% endif %}</p>
-                        </div>
-                        {#<p class="bottom15">Full access</p>#}
-                        {#<p class="bottom15">Unlimited Bandwidth</p>#}
-                        {#<p class="bottom15">Enail Accounts</p>#}
-                        {#<p class="bottom15">8 Free Forks Every Months</p>#}
-                        {#<a href="#." class="btn_border text-uppercase top30">sign up</a>#}
-                    </div>
-                </div>
-            {% endfor %}
-
-            {#<div class="col-sm-4">#}
-                {#<div class="pricing_table text-center top40 wow fadeInUp">#}
-                    {#<h3 class="price_title">Basic</h3>#}
-                    {#<div class="price top30 bottom20">#}
-                        {#<p><span class="dollor">$</span>26<span class="month">/monthly</span></p>#}
-                    {#</div>#}
-                    {#<p class="bottom15">Full access</p>#}
-                    {#<p class="bottom15">Unlimited Bandwidth</p>#}
-                    {#<p class="bottom15">Enail Accounts</p>#}
-                    {#<p class="bottom15">8 Free Forks Every Months</p>#}
-                    {#<a href="#." class="btn_border text-uppercase top30">sign up</a>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div class="col-sm-4">#}
-                {#<div class="pricing_table text-center top40 wow fadeInUp" data-wow-delay="700ms">#}
-                    {#<h3 class="price_title">Advanced</h3>#}
-                    {#<div class="price top30 bottom20">#}
-                        {#<p><span class="dollor">$</span>50<span class="month">/monthly</span></p>#}
-                    {#</div>#}
-                    {#<p class="bottom15">Full access</p>#}
-                    {#<p class="bottom15">Unlimited Bandwidth</p>#}
-                    {#<p class="bottom15">Enail Accounts</p>#}
-                    {#<p class="bottom15">8 Free Forks Every Months</p>#}
-                    {#<a href="#." class="btn_border text-uppercase top30">sign up</a>#}
-                {#</div>#}
-            {#</div>#}
-        </div>
-    </div>
-</section>
-<!-- PRICINGS ends -->
-
-
-
-<!--Four Boxes-->
-<section id="feature" class="padding_top padding_bottom_half">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-6 col-md-3 bottom40">
-                <div class="feature_up wow fadeInUp" data-wow-delay="300ms">
-                    <div class="feature_in centered">
-                        <i class="icon-tools bottom10"></i>
-                        <h3 class="text-capitalize bottom10">Jangkauan Pengiriman</h3>
-                        <p>Gak perlu repot bingung mau pesen dan ambil barang. Cukup pesan disini langsung barang yang diinginkan akan diproses dan diantarkan kerumah / lokasi acara anda.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 bottom40">
-                <div class="feature_up wow fadeInUp" data-wow-delay="500ms">
-                    <div class="feature_in centered">
-                        <i class="icon-mobile bottom10"></i>
-                        <h3 class="text-capitalize bottom10">Pengemasan yang baik</h3>
-                        <p>kualitas dari hasil produk pesanan menjadi prioritas</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 bottom40">
-                <div class="feature_up wow fadeInUp" data-wow-delay="600ms">
-                    <div class="feature_in centered">
-                        <i class="icon-hotairballoon bottom10"></i>
-                        <h3 class="text-capitalize bottom10">Custom Desain</h3>
-                        <p>Pengguna dapat memasukkan desainnya bila punya desain sendiri</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 bottom40">
-                <div class="feature_up wow fadeInUp" data-wow-delay="700ms">
-                    <div class="feature_in centered">
-                        <i class="icon-alarmclock bottom10"></i>
-                        <h3 class="text-capitalize bottom10">Harga Relatif Murah, Pemesanan yang simple dan Tidak Repot</h3>
-                        <p>harga relatif murah karena prinoo berkerjasama dengan pihak vendor pengadaan</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--Four Boxes Ends-->
-<section id="descrip" class="padding_bottom">
-    <h2 class="text-capitalize bottom25"><center>Tertarik memesan di kami?</center></h2>
-    <h2 class="text-capitalize bottom25"><center>Silahkan isi form dibawah ini</center></h2>
-    <form class="callus" method="post">
-        <div class="form-group">
-            <label for="harga">Harga</label>
-            <select name="barang" id="harga" class="form-control">
-                <option value="null">-- Pilih Paket --</option>
-                {% for item in barang %}
-                    <option value="{{ item.id }}" data-price="{{ item.hargaBarang }}" selected="">{{ item.namaBarang }}</option>
-                {% endfor %}
-            </select>
-            {#<input type="text" class="form-control" placeholder="Your Name">#}
-        </div>
-        <div class="form-group">
-            <label for="jumlah">Total Pemesanan</label>
-            <input type="number" name="total_pemesan" id="jumlah" class="form-control" placeholder="Masukkan Total Pemesanan">
-        </div>
-        <div class="form-group">
-            <label for="total">Total Harga</label>
-            <input type="text" name="total_harga" id="total" class="form-control" placeholder="Total Harga">
-        </div>
-        <button class="btn_default btn_border text-uppercase">SUBMIT</button>
-    </form>
-</section>
-
-
-<!--FOOTER-->
-<footer>
-    <div class="container foot_inner padding_top">
-        <div class="row">
-            <div class="col-sm-4 foot_panel bottom25" style="margin-top: 30px;">
-                <img src="{{ asset('assets_frontend') }}/images/prinoo-01.png" alt="logo" class="bottom30">
-                {#<p>Start Our Studio Duis aute to irure dolor in reprehenderit in cillum nulla excepteur sint.</p>#}
-            </div>
-            <div class="col-sm-8 foot_panel">
-                <h3 class="bottom30">Get in Touch</h3>
+    <section>
+        <div class="container pb-0">
+            <div class="section-title text-center mb-30">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <div class="reach bottom25">
-                            <i class="icon-location"></i>
-                            <p>Jl Perumahan Bukit Citra Tidar Sukun <br>Malang</p>
-                        </div>
+                    <div class="col-md-12">
+                        <h2 class="mt-0 mb-5">New Collection</h2>
+                        <p class="font-16 mt-0">See what new products are available in online shop</p>
                     </div>
-                    <div class="col-sm-4 bottom25">
-                        <div class="reach bottom10">
-                            <i class="icon-icons202"></i>
-                            <p>+6282245655117</p>
+                </div>
+            </div>
+            <div class="row multi-row-clearfix">
+                <div class="col-md-12">
+                    <div class="products">
+
+                        {% for barang in barangNew %}
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-30">
+                            <div class="product">
+                                {#<span class="tag-sale">Sale!</span>#}
+                                <div class="product-thumb">
+                                    {% if barang.profileBarang is null %}
+                                        <img alt="" src="http://placehold.it/285x300" class="img-responsive img-fullwidth">
+                                    {% else %}
+                                        <img src="{{ asset('uploads') }}/images/barang/{{ barang.profileBarang }}" alt="" class="img-responsive img-fullwidth">
+                                    {% endif %}
+                                    <div class="overlay">
+                                        <div class="btn-add-to-cart-wrapper">
+                                            <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="{{ path('app_add_cart',{id: barang.id}) }}">Add To Cart</a>
+                                        </div>
+                                        <div class="btn-product-view-details">
+                                            <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="{{ path('app_barang_detail',{id: barang.id}) }}">View detail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-details text-center">
+                                    <a href="#"><h5 class="product-title">{{ barang.namaBarang }}</h5></a>
+                                    {#<div class="star-rating" title="Rated 3.50 out of 5"><span style="width: 67%;">3.50</span></div>#}
+                                    <div class="price"><span class="amount">{{ barang.hargaBarang }}</span></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="reach">
-                            <i class="icon-mail"></i>
-                            <p><a href="#.">prinoo.id@gmail.com</a></p>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            <div class="row">
-                <div class="col-sm-6">
-                    <p>Copyrights © 2017 STT MALANG</p>
+    </section>
+
+    <!-- Section: Shop  -->
+    <section id="shop">
+        <div class="container pb-30">
+            <div class="section-title text-center mb-30">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="mt-0 mb-5">Best Selling Products</h2>
+                        <h4>See our all time best products in online store</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row multi-row-clearfix">
+                <div class="col-md-12">
+                    {% for item in barang %}
+                    <div class="products owl-carousel-4col">
+                            <div class="item">
+                                <div class="product">
+                                    <div class="product-thumb">
+                                        {% if item.profileBarang is null %}
+                                            <img alt="" src="http://placehold.it/285x300" class="img-responsive img-fullwidth">
+                                        {% else %}
+                                            <img src="{{ asset('uploads') }}/images/barang/{{ item.profileBarang }}" alt="" class="img-responsive img-fullwidth">
+                                        {% endif %}
+                                        <div class="overlay">
+                                            <div class="btn-add-to-cart-wrapper">
+                                                <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="{{ path('app_add_cart',{id: item.id}) }}" target="_blank">Add To Cart</a>
+                                            </div>
+                                            <div class="btn-product-view-details">
+                                                <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="{{ path('app_barang_detail',{id: item.id}) }}">View detail</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-details text-center">
+                                        <a href="#"><h5 class="product-title">{{ item.namaBarang }}</h5></a>
+
+                                        {#<div class="star-rating" title="Rated 3.50 out of 5"><span style="width: 67%;">3.50</span></div>#}
+                                        <div class="price"><span class="amount">{{ item.hargaBarang }}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </section>
+
+    {#<!-- Divider: Call To Action -->#}
+    {#<section class="bg-theme-color-2">#}
+    {#<div class="container pt-10 pb-20">#}
+    {#<div class="row">#}
+    {#<div class="call-to-action">#}
+    {#<div class="col-md-1 text-right sm-text-center pr-0">#}
+    {#<i class="pe-7s-cart text-white font-36 mr-10"></i>#}
+    {#</div>#}
+    {#<div class="col-md-9 pl-0">#}
+    {#<h3 class="mt-5 text-white text-uppercase font-weight-600">All kind of sell get 20% discount in this season with gift!</h3>#}
+    {#</div>#}
+    {#<div class="col-md-2 text-right flip sm-text-center">#}
+    {#<a class="btn btn-default btn-lg btn-circled mt-5" href="#">Shop Now<i class="fa fa-angle-double-right font-16 ml-10"></i></a>#}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+    {#</section>#}
+    <!-- end main-content -->
 
 {% endblock %}
 {% block javascript %}

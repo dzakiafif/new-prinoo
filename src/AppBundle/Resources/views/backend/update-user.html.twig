@@ -38,7 +38,7 @@
                                         {% if data.profilePhoto is null %}
                                             <img src="{{ asset('assets_backend') }}/images/cloud.png" height="250" class="img-responsive" align="center">
                                         {% else %}
-                                            <img src="{{ asset('uploads') }}/images/profile/{{ data.profilePhoto }}" height="250" class="img-responsive" align="center">
+                                            <img src="{{ asset('uploads') }}/images/profile/{{ data.profilePhoto }}" height="250" align="center">
                                         {% endif %}
                                         <input type="file" id="img-image" accept="image/*" class="hide" name="profile_photo" onchange="readURL(this);" value="{% if data.profilePhoto is defined %}{{ data.profilePhoto }}{% endif %}">
                                         <br> <small>(rekomendasi file maximum 1MB & extension: .png,.jpg,.svg,.jpeg)</small>

@@ -33,6 +33,21 @@ class Barang
      */
     private $description;
 
+    /**
+     * @var string
+     */
+    private $profileBarang;
+
+    /**
+     * @var int
+     */
+    private $isTop;
+
+    /**
+     * @var int
+     */
+    private $isNew;
+
 
     /**
      * Get id
@@ -127,4 +142,69 @@ class Barang
     {
         return $this->description;
     }
+
+    /**
+     * @param $profileBarang
+     * @return $this
+     */
+    public function setProfileBarang($profileBarang)
+    {
+        $this->profileBarang = $profileBarang;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfileBarang()
+    {
+       return $this->profileBarang;
+    }
+
+    /**
+     * @param $isTop
+     * @return $this
+     */
+    public function setIsTop($isTop)
+    {
+        $this->isTop = $isTop;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIsTop()
+    {
+        return $this->isTop;
+    }
+
+    /**
+     * @param $isNew
+     * @return $this
+     */
+    public function setIsNew($isNew)
+    {
+        $this->isNew = $isNew;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIsNew()
+    {
+        return $this->isNew;
+    }
+
+    
+
+    public function addItem($id)
+    {
+
+    }
 }
+

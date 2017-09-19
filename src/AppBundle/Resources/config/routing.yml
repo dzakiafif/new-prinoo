@@ -15,6 +15,31 @@ app_faq:
     defaults:
       _controller: AppBundle:User:faq
 
+app_barang_detail:
+    path: /barang-detail/{id}
+    defaults:
+      _controller: AppBundle:User:barangDetail
+
+app_gallery:
+    path: /gallery
+    defaults:
+      _controller: AppBundle:User:gallery
+
+app_gallery_page:
+    path: /gallery/{page}
+    defaults:
+      _controller: AppBundle:User:gallery
+
+app_cart:
+    path: /cart
+    defaults:
+      _controller: AppBundle:User:cart
+
+app_add_cart:
+    path: /add-cart/{id}
+    defaults:
+      _controller: AppBundle:User:addCart
+
 app_index:
     path: /
     defaults:

@@ -9,7 +9,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Nama Barang</label>
                                 <input type="text" name="nama_barang" id="" class="form-control" value="{% if data.namaBarang is defined and not null %}{{ data.namaBarang }}{% endif %}">
@@ -20,15 +20,49 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Deskripsi Barang</label>
-                                <input type="text" name="description" id="description" class="form-control" value="{% if data.description is not null %}{{ data.description }}{% else %}-{% endif %}">
+                                <textarea name="description" id="" cols="30" rows="10" class="form-control">
+                                    {% if data.description is defined and not null %}
+                                        {{ data.description }}
+                                    {% endif %}
+                                </textarea>
+                                {#<input type="text" name="description" id="description" class="form-control" value="{% if data.description is not null %}{{ data.description }}{% else %}-{% endif %}">#}
                             </div>
                             <div class="form-group">
                                 <label for="jenis_barang">Jenis Barang</label>
                                 <select name="jenis_barang" id="jenis_barang" class="form-control">
                                     <option value="">-- Pilih Jenis Barang --</option>
-                                    <option value="1" {% if data.jenisBarang is defined and not null %}{% if data.jenisBarang == 1 %}selected{% endif %}{% endif %}>Paket</option>
-                                    <option value="2" {% if data.jenisBarang is not null %}{% if data.jenisBarang == 2 %}selected{% endif %}{% endif %}></option>
+                                    <option value="1" {% if data.jenisBarang is not null %}{% if data.jenisBarang == 1 %}selected{% endif %}{% endif %}>Paket</option>
+                                    <option value="2" {% if data.jenisBarang is not null %}{% if data.jenisBarang == 2 %}selected{% endif %}{% endif %}>Satuan</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="new">Barang Baru</label>
+                                <select name="new" id="new" class="form-control">
+                                    <option value="">-- Apakah Barang Baru? --</option>
+                                    <option value="1" {% if data.isNew is not null %}{% if data.isNew == 1 %}selected{% endif %}{% endif %}>Ya</option>
+                                    <option value="2" {% if data.isNew is not null %}{% if data.isNew == 2 %}selected{% endif %}{% endif %}>Tidak</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="top">Trending</label>
+                                <select name="top" id="top" class="form-control">
+                                    <option value="">-- Apakah Barang Trending? --</option>
+                                    <option value="1" {% if data.isTop is not null %}{% if data.isTop == 1 %}selected{% endif %}{% endif %}>Ya</option>
+                                    <option value="2" {% if data.isTop is not null %}{% if data.isTop == 2 %}selected{% endif %}{% endif %}>Tidak</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="img-avatar">
+                                    <label for="img-image" class="label-img">
+                                        {% if data.profileBarang is null %}
+                                            <img src="{{ asset('assets_backend') }}/images/cloud.png" height="250" class="img-responsive" align="center">
+                                        {% else %}
+                                            <img src="{{ asset('uploads') }}/images/barang/{{ data.profileBarang }}" height="250" align="center">
+                                        {% endif %}
+                                        <input type="file" id="img-image" accept="image/*" class="hide" name="profile_barang" onchange="readURL(this);" value="{% if data.profileBarang is defined %}{{ data.profileBarang }}{% endif %}">
+                                        <br> <small>(rekomendasi file maximum 1MB & extension: .png,.jpg,.svg,.jpeg)</small>
+                                    </label>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">SUBMIT</button>
                         </form>
@@ -37,4 +71,29 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block customJS %}
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var _thumb = $(input).parent().find('img');
+                if (!_thumb.length) {
+                    _thumb = $(input).parent().prev().find('img.img-responsive');
+                }
+                if (_thumb.length) {
+                    var reader = new FileReader();
+                    var height = _thumb.attr('height') || _thumb.height();
+                    reader.onload = function (e) {
+                        _thumb
+                                .attr('src', e.target.result)
+                                .width(height)
+                                .css('object-fit', 'cover')
+                                .height(height);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        }
+    </script>
 {% endblock %}

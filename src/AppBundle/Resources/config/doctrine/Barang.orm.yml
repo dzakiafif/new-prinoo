@@ -23,4 +23,17 @@ AppBundle\Entity\Barang:
         jenisBarang:
             type: integer
             column: jenis_barang
+        profileBarang:
+            type: string
+            length: 255
+            column: profile_barang
+            nullable: true
+        isTop:
+            type: integer
+            column: is_top
+            nullable: true
+        isNew:
+            type: integer
+            column: is_new
+            nullable: true
     lifecycleCallbacks: {  }
