@@ -62,6 +62,9 @@
                             {#<li role="separator" class="divider"></li>#}
                             {#<li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>#}
                             {#<li role="separator" class="divider"></li>#}
+                            <li>
+                                <a href="{{ path('app_home_index') }}"><i class="fa fa-home"></i>Home</a>
+                            </li>
                             <li><a href="{{ path('app_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                         <!-- /.dropdown-user -->
@@ -92,7 +95,9 @@
                         </div>
                         <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if app.user.firstName and app.user.lastName is not null %}{{ app.user.firstName }}&nbsp;{{ app.user.lastName }}{% endif %}<span class="caret"></span></a>
                         <ul class="dropdown-menu animated flipInY">
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            <li>
+                                <a href="{{ path('app_user_profile') }}"><i class="ti-user"></i> My Profile</a>
+                            </li>
                             <li><a href="{{ path('app_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                     </div>

@@ -118,6 +118,71 @@ class UserController extends Controller
         return $paginator;
     }
 
+    public function updateProfileAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $data = $em->getRepository(User::class)->find($user->getId());
+
+        if($request->getMethod() == 'POST') {
+            if($data instanceof User) {
+                $data->setFirstname($request->get('firstname'));
+                $data->setLastname($request->get('lastname'));
+                $data->setAddress($request->get('address'));
+                $data->setNoTelp($request->get('no_telp'));
+            }
+
+            if (!(is_dir($this->getParameter('profile_directory')['resource']))) {
+                @mkdir($this->getParameter('profile_directory')['resource'], 0777, true);
+            }
+
+            if(!empty($request->files->get('profile_photo'))) {
+                $file = $request->files->get('profile_photo');
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                $exAllowed = array('jpg', 'png', 'jpeg');
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                if (in_array($ext, $exAllowed)) {
+                    if ($file instanceof UploadedFile) {
+                        if (!($file->getClientSize() > (1024 * 1024 * 1))) {
+                            ImageResize::createFromFile(
+                                $request->files->get('profile_photo')->getPathName()
+                            )->saveTo($this->getParameter('profile_directory')['resource'] . '/' . $filename, 20, true);
+                            $data->setProfilePhoto($filename);
+                        } else {
+                            return 'gambar tidak boleh lebih dari 1 MB';
+                        }
+                    }
+                } else {
+                    return 'cek kembali extension gambar anda';
+                }
+            }
+
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('app_user_profile'));
+        }
+
+        return $this->render('AppBundle:backend:edit-profile.html.twig',[
+            'data' => $data
+        ]);
+    }
+
+    public function profileAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $data = $em->getRepository(User::class)->find($user->getId());
+        
+        return $this->render('AppBundle:backend:profile.html.twig',[
+            'data' => $data
+        ]);
+    }
+
     public function paginate($dql, $page = 1, $limit = 5)
     {
         $paginator = new Paginator($dql);

@@ -1,0 +1,81 @@
+{% extends 'sublayout_backend.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0">
+                        <center>Update Data Pengguna</center>
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Nama Depan</label>
+                                <input type="text" name="firstname" id="" class="form-control" value="{% if data.firstname is defined and not null %}{{ data.firstname }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Belakang</label>
+                                <input type="text" name="lastname" id="" class="form-control" value="{% if data.lastname is defined and not null %}{{ data.lastname }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" id="" class="form-control" value="{% if data.email is defined and not null %}{{ data.email }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <input type="text" name="address" id="" class="form-control" value="{% if data.address is defined and not null %}{{ data.address }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <label>Nomor Telepon</label>
+                                <input type="text" name="no_telp" id="" class="form-control" value="{% if data.noTelp is defined and not null %}{{ data.noTelp }}{% endif %}">
+                            </div>
+                            <div class="form-group">
+                                <div class="img-avatar">
+                                    <label for="img-image" class="label-img">
+                                        {% if data.profilePhoto is null %}
+                                            <img src="{{ asset('assets_backend') }}/images/cloud.png" height="250" class="img-responsive" align="center">
+                                        {% else %}
+                                            <img src="{{ asset('uploads') }}/images/profile/{{ data.profilePhoto }}" height="250" align="center">
+                                        {% endif %}
+                                        <input type="file" id="img-image" accept="image/*" class="hide" name="profile_photo" onchange="readURL(this);" value="{% if data.profilePhoto is defined %}{{ data.profilePhoto }}{% endif %}">
+                                        <br> <small>(rekomendasi file maximum 1MB & extension: .png,.jpg,.svg,.jpeg)</small>
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block customJS %}
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var _thumb = $(input).parent().find('img');
+                if (!_thumb.length) {
+                    _thumb = $(input).parent().prev().find('img.img-responsive');
+                }
+                if (_thumb.length) {
+                    var reader = new FileReader();
+                    var height = _thumb.attr('height') || _thumb.height();
+                    reader.onload = function (e) {
+                        _thumb
+                                .attr('src', e.target.result)
+                                .width(height)
+                                .css('object-fit', 'cover')
+                                .height(height);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        }
+
+    </script>
+{% endblock %}

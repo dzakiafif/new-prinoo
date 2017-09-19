@@ -16,6 +16,7 @@
                                 <th>No.HP</th>
                                 <th>Nama Paket</th>
                                 <th>Jumlah Pesanan</th>
+                                <th>Jumlah Harga</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -52,6 +53,11 @@
                                             {% endif %}
                                         </td>
                                         <td>
+                                            {% if item.totalHarga is not null %}
+                                                {{ item.totalHarga }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
                                             {% if item.isProses is not null %}
                                                 {% if item.isProses == 0 %}
                                                     <span class="label label-danger">Belum Diverifikasi</span>
@@ -68,7 +74,7 @@
                                 {% endfor %}
                             {% else %}
                                 <tr>
-                                    <td colspan="6"><center>Tidak ada data</center></td>
+                                    <td colspan="9"><center>Tidak ada data</center></td>
                                 </tr>
                             {% endif %}
                             </tbody>

@@ -48,6 +48,7 @@ class AdminController extends Controller
                 $data->setFirstname($request->get('firstname'));
                 $data->setLastname($request->get('lastname'));
                 $data->setEmail($request->get('email'));
+                $data->setAddress($request->get('address'));
                 $data->setNoTelp($request->get('no_telp'));
             }
 
@@ -75,8 +76,6 @@ class AdminController extends Controller
                     return 'cek kembali extension gambar anda';
                 }
             }
-
-//            return var_dump($data);
 
             $em->persist($data);
             $em->flush();
