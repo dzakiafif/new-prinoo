@@ -32,19 +32,43 @@
                             <div class="row">
                                 <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
                                     <br>
-                                    <p class="text-muted">Johnathan Deo</p>
+                                    <p class="text-muted">
+                                        {% if data.firstname and data.lastname is not null %}
+                                            {{ data.firstname }}&nbsp;{{ data.lastname }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </p>
                                 </div>
                                 <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
                                     <br>
-                                    <p class="text-muted">(123) 456 7890</p>
+                                    <p class="text-muted">
+                                        {% if data.noTelp is not null %}
+                                            {{ data.noTelp }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </p>
                                 </div>
                                 <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
                                     <br>
-                                    <p class="text-muted">johnathan@admin.com</p>
+                                    <p class="text-muted">
+                                        {% if data.email is not null %}
+                                            {{ data.email }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </p>
                                 </div>
                                 <div class="col-md-3 col-xs-6"> <strong>Location</strong>
                                     <br>
-                                    <p class="text-muted">London</p>
+                                    <p class="text-muted">
+                                        {% if data.address is not null %}
+                                            {{ data.address }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </p>
                                 </div>
                             </div>
                         </div>
