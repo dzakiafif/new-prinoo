@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+use Doctrine\Common\Util\Debug;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use AppBundle\Entity\ImageResize;
@@ -17,6 +18,7 @@ use AppBundle\Entity\Pemesanan;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -306,9 +308,23 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
+        $managerConfig = $em->getConfiguration();
+
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $data = $em->getRepository(Pemesanan::class)->findBy(['user'=>$user->getId()]);
+        $dateNow = new \DateTime();
+
+        $managerConfig->addCustomDatetimeFunction('DATE','DoctrineExtensions\Query\Mysql\Date');
+
+//        $data = $em->getRepository(Pemesanan::class)->findBy(['user'=>$user->getId()]);
+//        $data = $em->createQueryBuilder()
+//            ->select('u')
+//            ->from(Pemesanan::class,'u')
+//            ->where('DATE(u.createdAt) = :date')
+//            ->setParameter('date', $dateNow->format('Y-m-d'))
+//            ->getQuery()->getResult();
+
+        $data = $em->createQuery("SELECT u from AppBundle:Pemesanan u where DATE(u.createdAt) = CURRENT_DATE()")->getResult();
 
         return $this->render('AppBundle:backend:user-pemesanan.html.twig',['data'=>$data]);
     }
@@ -389,6 +405,7 @@ class UserController extends Controller
             $data->setBarang($em->getRepository(Barang::class)->find($session->get('test')['value']));
             $data->setTotalPemesan($request->get('total_pemesan'));
             $data->setTotalHarga($request->get('total_harga'));
+            $data->setCreatedAt(new \DateTime('now'));
             $data->setIsProses(0);
 
             $em->persist($data);

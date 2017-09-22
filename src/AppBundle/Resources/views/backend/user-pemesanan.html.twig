@@ -11,6 +11,7 @@
                             <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>Tanggal Pemesanan</th>
                                 <th>Nama Pemesanan</th>
                                 <th>Alamat</th>
                                 <th>No.HP</th>
@@ -27,6 +28,11 @@
                                 {% for item in data %}
                                     <tr>
                                         <td>{{ i }}</td>
+                                        <td>
+                                            {% if item.createdAt is not null %}
+                                                {{ item.createdAt|date('d M Y') }}
+                                            {% endif %}
+                                        </td>
                                         <td>
                                             {% if item.user is not null %}
                                                 {{ item.user.firstName }}&nbsp;{{ item.user.lastName }}
@@ -52,7 +58,7 @@
                                                 {{ item.totalPemesan }}
                                             {% endif %}
                                         </td>
-                                        <td>
+                                        <td id="price{{ i }}">
                                             {% if item.totalHarga is not null %}
                                                 {{ item.totalHarga }}
                                             {% endif %}
@@ -72,6 +78,11 @@
                                     </tr>
                                     {% set i = i + 1 %}
                                 {% endfor %}
+                                <tr>
+                                    {#<td colspan="6"></td>#}
+                                    <td colspan="7" style="text-align: right">SUB TOTAL</td>
+                                    <td colspan="2" id="totalHarga" style="font-weight: bold">0</td>
+                                </tr>
                             {% else %}
                                 <tr>
                                     <td colspan="9"><center>Tidak ada data</center></td>
@@ -84,4 +95,18 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block customJS %}
+    <script>
+        $(function () {
+            var hargaTotal = 0,
+                    contentLength = $('[id^=price]').length;
+
+            for (i = 1; i <= contentLength; i++) {
+                hargaTotal = hargaTotal + (parseInt($('#price' + i).text()));
+            }
+
+            $('#totalHarga').text(hargaTotal);
+        });
+    </script>
 {% endblock %}

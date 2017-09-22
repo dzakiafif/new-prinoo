@@ -35,6 +35,11 @@ class Pemesanan
     private $totalHarga;
 
     /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
      * @var int
      */
     private $isProses;
@@ -129,6 +134,18 @@ class Pemesanan
     public function getTotalHarga()
     {
         return $this->totalHarga;
+    }
+
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     public function getIsProses()

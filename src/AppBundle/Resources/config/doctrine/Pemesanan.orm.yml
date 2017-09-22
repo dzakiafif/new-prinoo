@@ -32,6 +32,9 @@ AppBundle\Entity\Pemesanan:
             type: string
             length: 255
             column: total_harga
+        createdAt:
+            type: datetime
+            column: created_at
         isProses:
             type: integer
             column: is_proses    
